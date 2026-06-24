@@ -1,0 +1,4 @@
+{
+  "linter": "eslint",
+  "formatter": "oxfmt"
+}
