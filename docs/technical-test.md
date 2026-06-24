@@ -29,13 +29,13 @@ You are free to use any tools, libraries, or frameworks you are comfortable with
 |                |                                             |
 |   SIDEBAR      |   MAIN CONTENT                              |
 |   (Sticky)     |                                             |
-|                |   Blog Post Title                          |
-|  - Author Info |   Published date · reading time            |
+|                |   Blog Post Title                           |
+|  - Author Info |   Published date · reading time             |
 |  - Table of    |                                             |
-|    Contents    |   [ Cover Image ]                          |
+|    Contents    |   [ Cover Image ]                           |
 |  - Tags/Links  |                                             |
-|                |   Paragraphs of article body text...       |
-|                |   Headings, lists, quotes, code block      |
+|                |   Paragraphs of article body text...        |
+|                |   Headings, lists, quotes, code block       |
 |                |                                             |
 +----------------+---------------------------------------------+
 |  Footer                                                      |
@@ -103,4 +103,8 @@ Please provide:
 
 1. A link to your code repository (GitHub, GitLab) or a clean `.zip` file.
 2. A brief `README.md` file explaining your framework choices, architecture choices, trade-offs, and instructions on how to run it locally.
-3. *(Optional but highly appreciated)* A live deployment link (Vercel, Netlify, or GitHub Pages).
+3. _(Optional but highly appreciated)_ A live deployment link (Vercel, Netlify, or GitHub Pages).
+
+## A few notes:
+
+- Build the design as a faithful, responsive page using your own HTML/CSS/JS. Libraries are fine for logic, but we want to see your own styling and layout.
