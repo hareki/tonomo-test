@@ -1,4 +1,4 @@
-import { postMetadataItems } from './metadata';
+import { postMetadataItems } from './posts';
 
 import type { PostMetadata } from './types';
 

@@ -12,7 +12,7 @@ export type Image = {
 };
 
 export type PostMetadata = {
-  /** Slug doubles as the stable post id, and names the MDX body file. */
+  /** Slug doubles as the stable post id, and names the post's directory under `posts/`. */
   slug: string;
   title: string;
   subtitle: string;

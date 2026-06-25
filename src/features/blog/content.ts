@@ -18,7 +18,7 @@ import type { TocEntry } from './types';
  */
 
 const WORDS_PER_MINUTE = 200;
-const CONTENT_DIR = path.join(process.cwd(), 'src/features/blog/content');
+const POSTS_DIR = path.join(process.cwd(), 'src/features/blog/posts');
 
 // Heading levels included in the table of contents (h2 through h4).
 const TOC_MIN_DEPTH = 2;
@@ -29,7 +29,7 @@ const TOC_MAX_DEPTH = 4;
 const parser = unified().use(remarkParse).use(remarkMdx);
 
 export function loadPostSource(slug: string): Promise<string> {
-  return readFile(path.join(CONTENT_DIR, `${slug}.mdx`), 'utf8');
+  return readFile(path.join(POSTS_DIR, slug, 'content.mdx'), 'utf8');
 }
 
 export type PostAnalysis = {

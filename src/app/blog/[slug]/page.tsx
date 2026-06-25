@@ -48,7 +48,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
     notFound();
   }
 
-  const { default: Content } = await import(`@/src/features/blog/content/${slug}.mdx`);
+  const { default: Content } = await import(`@/src/features/blog/posts/${slug}/content.mdx`);
   const { toc, minutes } = await getPostAnalysis(slug);
   const related = getRelatedPosts(post.slug);
 
