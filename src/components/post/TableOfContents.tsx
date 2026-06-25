@@ -106,7 +106,7 @@ export function TableOfContents({ entries }: { entries: TocEntry[] }) {
                     'block py-1.5 text-sm/snug transition-colors',
                     INDENT_BY_LEVEL[level],
                     isActive
-                      ? 'font-medium text-foreground'
+                      ? 'text-foreground'
                       : `
                         text-muted-foreground
                         hover:text-foreground
