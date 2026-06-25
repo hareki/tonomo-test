@@ -41,9 +41,9 @@ two-column desktop layout.
 
 ```
 src/
-  layout.tsx                  Root: fonts + ThemeProvider, <html data-theme>
-  (app)/
-    layout.tsx                Shell: skip link, sticky header, <main>, footer
+  app/
+    layout.tsx                Single shell: fonts + ThemeProvider, skip link, sticky header,
+                              <main>, footer, <html data-theme>
     blog/[slug]/
       page.tsx                generateStaticParams + generateMetadata + the post view
       not-found.tsx           Unknown slug
@@ -51,22 +51,33 @@ src/
     ui/                       Reusable primitives (Typography, Avatar, TonomoLogo, theme control)
     layout/                   SiteHeader, NavLinks, SiteFooter
     post/                     PostHero, PostByline, ShareLinks, CoverImage, PostLayout,
-                              ArticleBody, BlockRenderer, TableOfContents, RelatedArticle(s)
+                              ArticleBody, TableOfContents, RelatedArticle(s), and the MDX
+                              component mappings (Figure, Quote, HeadingLink)
   hooks/                      useActiveSection (scroll-spy), useScrolledPast (header state),
                               useHydrated
-  lib/posts/                  types.ts, data.ts (4 posts), queries.ts (toc, reading time, related…)
+  features/blog/              types.ts, authors.ts, queries.ts (edge-safe: getPost, related,
+                              random…), content.ts (Node-only: load MDX body, derive toc +
+                              reading time)
+    posts/
+      index.ts                Aggregates every post's metadata into one array
+      <slug>/
+        content.mdx           The post body (MDX)
+        metadata.ts           The post's typed PostMetadata
+  lib/tailwind/utils.ts       cn() class-merge helper
   providers/ThemeProvider.tsx
   styles/                     theme.css (tokens), view-transition.css, index.css
-proxy.ts                      Redirects `/` to a random post
+  proxy.ts                    Redirects `/` to a random post
 ```
 
 A few choices worth calling out:
 
-- **Typed content model, not MDX.** Each post is a typed object (`Post → Section[] → ContentBlock[]`)
-  in `src/lib/posts/data.ts`. The table of contents is **derived** from section headings
-  (`getToc`), so headings and the TOC can never drift apart, and reading time is computed from the
-  real body text (`readingTime`, 200 wpm, rounded up). `BlockRenderer` maps the typed block union
-  onto the `Typography` primitives.
+- **MDX bodies, co-located typed metadata.** Each post is a self-contained directory under
+  `src/features/blog/posts/<slug>/`: its body as `content.mdx` and its typed `PostMetadata` as
+  `metadata.ts`, with `posts/index.ts` aggregating them into one array. The table of contents and
+  reading time are **derived** by parsing the MDX in `content.ts` (`analyzePost`): headings (`h2`
+  through `h4`) become TOC entries, and reading time is computed from the real body text (200 wpm,
+  rounded up). `rehype-slug` ids the rendered headings while the same slugging seeds the TOC anchors,
+  so a TOC link can never drift from its heading.
 - **Clean component separation.** Every responsibility is its own component (byline, share row,
   cover, TOC, card…) rather than a few mega-components, so each is independently reusable.
 - **Server-first.** Pages are Server Components and statically prerendered; `'use client'` is used
@@ -127,8 +138,9 @@ served through `next/image` with explicit dimensions to preserve aspect ratio wi
 
 ## Trade-offs / what I'd do next
 
-- Content lives in a typed in-memory module; a real blog would move this behind a CMS or the
-  filesystem. The typed-model boundary (`features/posts`) is designed so that swap is localized.
+- Bodies are MDX files on disk with typed metadata beside them; a real blog would move this behind a
+  CMS. The `features/blog` boundary (queries + content loaders over `posts/<slug>/`) is designed so
+  that swap stays localized.
 - Share buttons and the top-nav links are intentional non-functional placeholders (with their own
   generic labels, not tonomo's real menu).
 - With more time: per-post OG images, a prev/next reader at the foot of the article, and a small
