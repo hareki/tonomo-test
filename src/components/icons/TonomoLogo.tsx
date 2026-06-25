@@ -1,11 +1,5 @@
 import type { SVGProps } from 'react';
 
-/**
- * Tonomo's wordmark, inlined so it can be tinted with `currentColor`. This is
- * what lets the logo stay legible as the header swaps between its transparent
- * (white, over the hero) and solid (foreground) states. See the README note on
- * reused tonomo assets.
- */
 export function TonomoLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

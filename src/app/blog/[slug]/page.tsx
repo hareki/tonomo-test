@@ -2,11 +2,12 @@ import { ViewTransition } from 'react';
 
 import { notFound } from 'next/navigation';
 
-import { ArticleBody } from '@/src/components/post/ArticleBody';
 import { CoverImage } from '@/src/components/post/CoverImage';
-import { PostHero } from '@/src/components/post/PostHero';
+import { MobileTocBar } from '@/src/components/post/MobileTocBar';
+import { PostBody } from '@/src/components/post/PostBody';
+import { PostHeader } from '@/src/components/post/PostHeader';
 import { PostLayout } from '@/src/components/post/PostLayout';
-import { RelatedArticles } from '@/src/components/post/RelatedArticles';
+import { RelatedPosts } from '@/src/components/post/RelatedPosts';
 import { TableOfContents } from '@/src/components/post/TableOfContents';
 import { getPostAnalysis } from '@/src/features/blog/content';
 import { getAllSlugs, getPost, getRelatedPosts } from '@/src/features/blog/queries';
@@ -15,11 +16,13 @@ import type { Metadata } from 'next';
 
 type Params = { slug: string };
 
+type PostPageProps = { params: Promise<Params> };
+
 export function generateStaticParams(): Params[] {
   return getAllSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getPost(slug);
 
@@ -40,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-export default async function PostPage({ params }: { params: Promise<Params> }) {
+export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
   const post = getPost(slug);
 
@@ -54,23 +57,27 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
 
   return (
     // Keyed by slug so post-to-post navigation (same dynamic route) remounts and
-    // the `.page` fade/rise fires; the cover's shared morph runs alongside it.
+    // the `.page` fade fires; the cover's shared morph runs alongside it.
     <ViewTransition key={post.slug} enter='page' exit='page' default='none'>
-      <PostHero post={post} readingMinutes={minutes} />
+      {/* Mobile-only secondary header with the table-of-contents drawer trigger. */}
+      <MobileTocBar entries={toc} />
 
       <PostLayout
         article={
-          <div className='space-y-10'>
+          <div className='space-y-8'>
+            {/* Banner: shares the content column's width, never spanning the sidebar. */}
             <CoverImage slug={post.slug} image={post.cover} priority />
-            <ArticleBody>
+            <PostHeader post={post} readingMinutes={minutes} />
+            <hr className='border-border' />
+            <PostBody>
               <Content />
-            </ArticleBody>
+            </PostBody>
           </div>
         }
         sidebar={<TableOfContents entries={toc} />}
       />
 
-      <RelatedArticles posts={related} />
+      <RelatedPosts posts={related} />
     </ViewTransition>
   );
 }

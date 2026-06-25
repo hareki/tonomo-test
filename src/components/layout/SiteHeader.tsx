@@ -1,37 +1,21 @@
-'use client';
-
 import Link from 'next/link';
 
+import { TonomoLogo } from '@/src/components/icons/TonomoLogo';
+import { Badge } from '@/src/components/ui/Badge';
+import { ThemeCycleButton } from '@/src/components/ui/ThemeCycleButton';
 import { ThemeSegmentedControl } from '@/src/components/ui/ThemeSegmentedControl';
-import { TonomoLogo } from '@/src/components/ui/TonomoLogo';
-import { useScrolledPast } from '@/src/hooks/useScrolledPast';
-import { cn } from '@/src/lib/tailwind/utils';
 
 import { NavLinks } from './NavLinks';
+import { NavMenuButton } from './NavMenuButton';
 
 import type { Route } from 'next';
 
-/** Id of the sentinel the hero renders at its bottom edge. */
-export const HEADER_SENTINEL_ID = 'header-sentinel';
-
-/**
- * Sticky site header. Over the hero it is transparent with white text; once the
- * hero scrolls past it switches to a solid, blurred background with foreground
- * text so it never becomes unreadable over the article body (Rule D). The logo,
- * nav, and theme control all inherit `currentColor`, so they recolor with it.
- */
 export function SiteHeader() {
-  const solid = useScrolledPast(HEADER_SENTINEL_ID);
-
   return (
     <header
-      data-solid={solid}
-      className={cn(
-        'sticky top-0 z-50 transition-colors duration-300',
-        solid
-          ? 'border-b border-border bg-background/80 text-foreground backdrop-blur-md'
-          : 'border-b border-transparent text-white',
-      )}
+      className={`
+        sticky top-0 z-50 border-b border-border bg-background/80 text-foreground backdrop-blur-md
+      `}
       style={{ viewTransitionName: 'site-header' }}
     >
       <div
@@ -41,26 +25,46 @@ export function SiteHeader() {
           lg:px-8
         `}
       >
-        <Link
-          // `/` has no page of its own; the proxy redirects it to a random post.
-          href={'/' as Route}
-          aria-label='Tonomo Journal, home'
-          className={`
-            rounded-sm
-            focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current
-          `}
-        >
-          <TonomoLogo className='h-5 w-auto' />
-        </Link>
+        <div className='flex flex-col items-end gap-1'>
+          <Link
+            // `/` has no page of its own; the proxy redirects it to a random post.
+            href={'/' as Route}
+            aria-label='Tonomo Journal, home'
+            className={`
+              rounded-sm
+              focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current
+            `}
+          >
+            <TonomoLogo className='h-5 w-auto' />
+          </Link>
+          <Badge>Technical Test</Badge>
+        </div>
 
         <NavLinks
-          className='
+          className={`
             hidden
             md:flex
-          '
+          `}
         />
 
-        <ThemeSegmentedControl />
+        <div className='flex items-center gap-4'>
+          <ThemeSegmentedControl
+            className={`
+              hidden
+              md:inline-flex
+            `}
+          />
+
+          <div
+            className={`
+              flex items-center gap-2
+              md:hidden
+            `}
+          >
+            <ThemeCycleButton />
+            <NavMenuButton />
+          </div>
+        </div>
       </div>
     </header>
   );
