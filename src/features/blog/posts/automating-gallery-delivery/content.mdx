@@ -1,0 +1,110 @@
+## Why Automate Delivery
+
+The shoot is the fun part. The delivery is where studios quietly lose hours: renaming files, resizing for the web, zipping a folder, and pasting the same email for the hundredth time. None of it is hard, which is exactly why it is worth handing to a script. A machine never forgets the `--quality` flag and never ships a 40MB frame by accident.
+
+The goal here is a tiny pipeline that watches your export folder, optimizes every new image, and notifies the client the moment a gallery is ready. It is roughly a hundred lines of TypeScript and it runs on the same laptop you already edit on.
+
+<Figure
+  src='https://picsum.photos/seed/delivery-pipeline-flow/1600/1000'
+  alt='A diagram of files moving from an export folder through an optimizer to a client notification.'
+  width={1600}
+  height={1000}
+  caption='Watch the folder, optimize the frame, notify the client: three stages, one script.'
+/>
+
+## The Pipeline at a Glance
+
+The whole thing is three stages glued together by a file watcher:
+
+1. **Watch** the export folder for new files.
+2. **Optimize** each frame to a web-friendly size and format.
+3. **Notify** the client with a link once the batch settles.
+
+We will lean on two well-worn libraries: `chokidar` for watching the filesystem and `sharp` for image work. Everything else is plain Node.
+
+## Setting Up the Watcher
+
+### Install the Tools
+
+Start a fresh project and add the two dependencies. The `-D` on `tsx` keeps the TypeScript runner out of your production footprint:
+
+```bash
+pnpm init
+pnpm add chokidar sharp
+pnpm add -D tsx typescript
+```
+
+### Configure the Folders
+
+Rather than bury paths in code, keep them in a `pipeline.json` next to the script. When the studio reorganizes its drive, you edit config, not logic:
+
+```json
+{
+  "watchDir": "~/Exports/incoming",
+  "outDir": "~/Exports/web",
+  "maxWidth": 2048,
+  "quality": 82,
+  "webhookUrl": "https://hooks.example.com/galleries"
+}
+```
+
+A quick note on the `watchDir`: point it at the folder Lightroom exports into, not your catalog. The watcher should only ever see finished frames, so a stray `~` in the path is the difference between shipping galleries and shipping nothing.
+
+## Optimizing on Export
+
+### Pick Your Targets
+
+Before writing code, decide what "web-friendly" means for your studio. Ours is a single rule: nothing wider than `maxWidth` pixels, re-encoded as progressive JPEG at `quality` 82. That keeps a typical listing gallery under a few megabytes total without visible artifacts on a retina display.
+
+### A Reusable Function
+
+`sharp` makes the actual transform a one-liner. Wrap it so the watcher can call it per file and so you can unit-test it later in isolation:
+
+```ts
+import path from 'node:path';
+import sharp from 'sharp';
+
+type Options = { maxWidth: number; quality: number; outDir: string };
+
+export async function optimize(file: string, opts: Options): Promise<string> {
+  const name = path.basename(file).replace(/\.[^.]+$/, '.jpg');
+  const dest = path.join(opts.outDir, name);
+
+  await sharp(file)
+    .resize({ width: opts.maxWidth, withoutEnlargement: true })
+    .jpeg({ quality: opts.quality, progressive: true })
+    .toFile(dest);
+
+  return dest;
+}
+```
+
+The `withoutEnlargement: true` flag is the unsung hero: it stops `sharp` from upscaling a frame that is already smaller than your target, which would only add bytes for no visible gain.
+
+<Quote cite='Devin Cole'>
+  The best delivery process is the one nobody has to remember. If a frame can reach the client
+  without a human touching it, that is one less place for the day to go sideways.
+</Quote>
+
+## Notifying the Client
+
+A gallery is not "done" the instant the first file lands, it is done when the folder stops changing. Debounce the watcher: every new file resets a short timer, and only when the timer fires do you consider the batch settled and POST to your `webhookUrl`.
+
+```ts
+import chokidar from 'chokidar';
+
+const pending = new Set<string>();
+let timer: NodeJS.Timeout;
+
+chokidar.watch(config.watchDir, { ignoreInitial: true }).on('add', (file) => {
+  pending.add(file);
+  clearTimeout(timer);
+  timer = setTimeout(() => flush(pending), 4000);
+});
+```
+
+When `flush` runs, optimize everything in `pending`, then send one notification for the whole gallery rather than a hundred pings. Your client gets a single, clean "your photos are ready" instead of a buzzing phone.
+
+## Where to Go Next
+
+This is deliberately small, and small is the point: it does one thing and you can read it in a sitting. Once it earns your trust, the obvious extensions are a retry around the webhook, a checksum so a re-exported frame overwrites cleanly, and a `--dry-run` flag for the first nervous week. Start with the three stages, ship it, and let the machine handle the part of the job you were never excited to do anyway.

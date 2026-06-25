@@ -1,5 +1,5 @@
+import { metadata as automatingGalleryDelivery } from './automating-gallery-delivery/metadata';
 import { metadata as buildingAReferralEngine } from './building-a-referral-engine/metadata';
-import { metadata as editingAtScale } from './editing-at-scale/metadata';
 import { metadata as pricingOnValueNotHours } from './pricing-on-value-not-hours/metadata';
 import { metadata as theFirstClientCall } from './the-first-client-call/metadata';
 
@@ -17,5 +17,5 @@ export const postMetadataItems: PostMetadata[] = [
   pricingOnValueNotHours,
   buildingAReferralEngine,
   theFirstClientCall,
-  editingAtScale,
+  automatingGalleryDelivery,
 ];
