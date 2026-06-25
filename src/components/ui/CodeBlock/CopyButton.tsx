@@ -55,7 +55,7 @@ export function CopyButton({ code }: CopyButtonProps) {
         copied && 'text-foreground',
       )}
     >
-      <Icon size={14} stroke={2} aria-hidden />
+      <Icon className='size-3.5' aria-hidden />
       <span aria-live='polite'>{copied ? 'Copied' : 'Copy'}</span>
     </button>
   );

@@ -3,6 +3,7 @@
 import { IconDeviceDesktop, IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from '@teispace/next-themes';
 
+import { Button } from '@/src/components/ui/Button';
 import { useHydrated } from '@/src/hooks/useHydrated';
 import { cn } from '@/src/lib/tailwind/utils';
 
@@ -35,25 +36,17 @@ export function ThemeCycleButton({ className }: ThemeCycleButtonProps) {
   const { label, Icon } = META[current];
 
   return (
-    <button
-      type='button'
+    <Button
+      size='icon'
       aria-label={`Color theme: ${label}. Click to change.`}
       onClick={() => {
         const next = CYCLE[(CYCLE.indexOf(current) + 1) % CYCLE.length];
 
         setTheme(next);
       }}
-      className={cn(
-        `
-          inline-flex size-9 items-center justify-center rounded-full border border-current/20
-          bg-current/5 text-current/70 transition-colors
-          hover:bg-current/10 hover:text-current
-          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current
-        `,
-        className,
-      )}
+      className={cn(className)}
     >
-      <Icon size={18} stroke={2} aria-hidden />
-    </button>
+      <Icon aria-hidden />
+    </Button>
   );
 }

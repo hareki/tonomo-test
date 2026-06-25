@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { IconListDetails, IconX } from '@tabler/icons-react';
 
+import { buttonVariants } from '@/src/components/ui/Button/variants';
 import {
   Drawer,
   DrawerClose,
@@ -54,15 +55,8 @@ export function MobileTocBar({ entries }: MobileTocBarProps) {
         `}
       >
         <Drawer open={open} onOpenChange={setOpen} direction='left'>
-          <DrawerTrigger
-            className={`
-              inline-flex items-center gap-2 rounded-full border border-border bg-background px-4
-              py-2 text-sm font-medium text-foreground transition-colors
-              hover:bg-muted
-              focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring
-            `}
-          >
-            <IconListDetails size={18} stroke={2} aria-hidden />
+          <DrawerTrigger className={buttonVariants({ variant: 'outline', size: 'sm' })}>
+            <IconListDetails aria-hidden />
             Table of Contents
           </DrawerTrigger>
 
@@ -73,14 +67,9 @@ export function MobileTocBar({ entries }: MobileTocBarProps) {
               </DrawerTitle>
               <DrawerClose
                 aria-label='Close table of contents'
-                className={`
-                  inline-flex size-8 items-center justify-center rounded-full text-muted-foreground
-                  transition-colors
-                  hover:bg-muted hover:text-foreground
-                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring
-                `}
+                className={buttonVariants({ size: 'icon', variant: 'ghost' })}
               >
-                <IconX size={18} stroke={2} aria-hidden />
+                <IconX aria-hidden />
               </DrawerClose>
             </div>
 

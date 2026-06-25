@@ -17,12 +17,12 @@ export function PostByline({ post, readingMinutes }: PostBylineProps) {
         {post.author.name}
       </span>
       <span className='inline-flex items-center gap-1.5'>
-        <IconCalendar size={16} stroke={2} aria-hidden />
+        <IconCalendar className='size-4' aria-hidden />
         <time dateTime={post.publishedAt}>{formatPublishedDate(post.publishedAt)}</time>
       </span>
       <span className='inline-flex items-center gap-1.5'>
-        <IconClock size={16} stroke={2} aria-hidden />
-        {readingMinutes} min read
+        <IconClock className='size-4' aria-hidden />
+        {readingMinutes} {readingMinutes === 1 ? 'min' : 'mins'} read
       </span>
     </div>
   );

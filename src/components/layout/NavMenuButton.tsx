@@ -2,6 +2,7 @@
 
 import { IconMenu2, IconX } from '@tabler/icons-react';
 
+import { buttonVariants } from '@/src/components/ui/Button/variants';
 import {
   Drawer,
   DrawerClose,
@@ -20,16 +21,8 @@ import { PRIMARY_NAV_LINKS } from './constants';
 export function NavMenuButton() {
   return (
     <Drawer direction='left'>
-      <DrawerTrigger
-        aria-label='Open navigation menu'
-        className={`
-          inline-flex size-9 items-center justify-center rounded-full border border-current/20
-          text-current/70 transition-colors
-          hover:bg-current/10 hover:text-current
-          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current
-        `}
-      >
-        <IconMenu2 size={18} stroke={2} aria-hidden />
+      <DrawerTrigger aria-label='Open navigation menu' className={buttonVariants({ size: 'icon' })}>
+        <IconMenu2 aria-hidden />
       </DrawerTrigger>
 
       <DrawerContent>
@@ -37,14 +30,9 @@ export function NavMenuButton() {
           <DrawerTitle className='text-sm font-semibold tracking-wide uppercase'>Menu</DrawerTitle>
           <DrawerClose
             aria-label='Close navigation menu'
-            className={`
-              inline-flex size-8 items-center justify-center rounded-full text-muted-foreground
-              transition-colors
-              hover:bg-muted hover:text-foreground
-              focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring
-            `}
+            className={buttonVariants({ size: 'icon', variant: 'ghost' })}
           >
-            <IconX size={18} stroke={2} aria-hidden />
+            <IconX aria-hidden />
           </DrawerClose>
         </div>
 

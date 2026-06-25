@@ -49,7 +49,7 @@ export function ThemeSegmentedControl({ className }: ThemeSegmentedControlProps)
             `,
           )}
         >
-          <Icon size={16} stroke={2} aria-hidden />
+          <Icon className='size-4' aria-hidden />
         </Radio.Root>
       ))}
     </RadioGroup>

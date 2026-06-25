@@ -25,7 +25,7 @@ export function SiteHeader() {
           lg:px-8
         `}
       >
-        <div className='flex flex-col items-end gap-1'>
+        <div className='flex flex-col items-end gap-1.5'>
           <Link
             // `/` has no page of its own; the proxy redirects it to a random post.
             href={'/' as Route}

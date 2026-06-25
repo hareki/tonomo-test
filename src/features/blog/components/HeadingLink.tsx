@@ -49,7 +49,7 @@ export function HeadingLink({ level, id, className, children, ...props }: Headin
             motion-reduce:translate-x-0 motion-reduce:transition-none
           `)}
         >
-          <IconLink aria-hidden size='0.8em' stroke={2} />
+          <IconLink aria-hidden size='0.8em' />
         </a>
       )}
     </Heading>
