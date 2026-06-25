@@ -14,13 +14,11 @@ const OPTIONS = [
   { value: 'dark', label: 'Dark theme', Icon: IconMoon },
 ] as const;
 
-/**
- * Light / system / dark segmented control (see IMG-3). Styled entirely with
- * `currentColor` so it stays legible whether the header is transparent over the
- * hero (white text) or solid (foreground text) - see Rule D. Selection state is
- * only reflected after hydration to avoid a mismatch on the resolved theme.
- */
-export function ThemeSegmentedControl({ className }: { className?: string }) {
+type ThemeSegmentedControlProps = {
+  className?: string;
+};
+
+export function ThemeSegmentedControl({ className }: ThemeSegmentedControlProps) {
   const { theme, setTheme } = useTheme();
   const hydrated = useHydrated();
 

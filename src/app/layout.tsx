@@ -25,17 +25,17 @@ export const metadata: Metadata = {
   description: 'Field notes on running a profitable real estate media studio.',
 };
 
+type RootLayoutProps = Readonly<{
+  children: React.ReactNode;
+}>;
+
 /**
  * The single shell for every rendered route: a skip link, the sticky header,
  * the main landmark, and the footer. `/` never reaches here because the proxy
  * redirects it to a random post before any layout renders, so the shell only
  * ever wraps real content.
  */
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang='en'

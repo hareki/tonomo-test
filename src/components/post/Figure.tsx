@@ -8,11 +8,6 @@ type FigureProps = {
   caption?: string;
 };
 
-/**
- * A captioned body image. Explicit `width`/`height` reserve space (no layout
- * shift) and `h-auto w-full` keeps the intrinsic aspect ratio. Authored in MDX
- * as `<Figure ... />` because plain markdown images can't carry dimensions.
- */
 export function Figure({ src, alt, width, height, caption }: FigureProps) {
   return (
     <figure className='space-y-2'>

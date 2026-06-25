@@ -11,11 +11,6 @@ type CoverImageProps = {
   priority?: boolean;
 };
 
-/**
- * The article cover. Explicit intrinsic dimensions plus `h-auto w-full` keep the
- * aspect ratio and reserve space, so there is no clipping or layout shift. The
- * shared `name` lets it morph from the related-card thumbnail on navigation.
- */
 export function CoverImage({ slug, image, priority }: CoverImageProps) {
   return (
     <ViewTransition name={`post-cover-${slug}`} share='morph'>
