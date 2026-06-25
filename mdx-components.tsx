@@ -1,11 +1,11 @@
 import { isValidElement } from 'react';
 import type { ReactNode } from 'react';
 
-import { Figure } from '@/src/components/post/Figure';
-import { HeadingLink } from '@/src/components/post/HeadingLink';
-import { Quote } from '@/src/components/post/Quote';
 import { CodeBlock } from '@/src/components/ui/CodeBlock';
 import { Blockquote, InlineCode, List, P } from '@/src/components/ui/Typography';
+import { Figure } from '@/src/features/blog/components/Figure';
+import { HeadingLink } from '@/src/features/blog/components/HeadingLink';
+import { Quote } from '@/src/features/blog/components/Quote';
 import { cn } from '@/src/lib/tailwind/utils';
 
 import type { MDXComponents } from 'mdx/types';

@@ -47,7 +47,7 @@ export function CopyButton({ code }: CopyButtonProps) {
       onClick={handleCopy}
       className={cn(
         `
-          inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium
+          inline-flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium
           text-muted-foreground transition-colors
           hover:bg-background hover:text-foreground
           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring

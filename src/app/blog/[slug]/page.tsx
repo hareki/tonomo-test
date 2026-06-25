@@ -2,13 +2,13 @@ import { ViewTransition } from 'react';
 
 import { notFound } from 'next/navigation';
 
-import { CoverImage } from '@/src/components/post/CoverImage';
-import { MobileTocBar } from '@/src/components/post/MobileTocBar';
-import { PostBody } from '@/src/components/post/PostBody';
-import { PostHeader } from '@/src/components/post/PostHeader';
-import { PostLayout } from '@/src/components/post/PostLayout';
-import { RelatedPosts } from '@/src/components/post/RelatedPosts';
-import { TableOfContents } from '@/src/components/post/TableOfContents';
+import { CoverImage } from '@/src/features/blog/components/CoverImage';
+import { MobileTocBar } from '@/src/features/blog/components/MobileTocBar';
+import { PostBody } from '@/src/features/blog/components/PostBody';
+import { PostHeader } from '@/src/features/blog/components/PostHeader';
+import { PostLayout } from '@/src/features/blog/components/PostLayout';
+import { RelatedPosts } from '@/src/features/blog/components/RelatedPosts';
+import { TableOfContents } from '@/src/features/blog/components/TableOfContents';
 import { getPostAnalysis } from '@/src/features/blog/content';
 import { getAllSlugs, getPost, getRelatedPosts } from '@/src/features/blog/queries';
 

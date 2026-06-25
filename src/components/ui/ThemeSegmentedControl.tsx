@@ -41,14 +41,12 @@ export function ThemeSegmentedControl({ className }: ThemeSegmentedControlProps)
           aria-label={label}
           className={cn(
             `
-              inline-flex size-8 items-center justify-center rounded-full text-current/60
-              transition-colors
-            `,
-            `
+              inline-flex size-8 cursor-pointer items-center justify-center rounded-full
+              text-current/60 transition-colors
               hover:text-current
               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current
+              data-checked:bg-current/15 data-checked:text-current
             `,
-            'data-checked:bg-current/15 data-checked:text-current',
           )}
         >
           <Icon size={16} stroke={2} aria-hidden />
