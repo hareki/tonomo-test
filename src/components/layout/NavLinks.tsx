@@ -1,22 +1,20 @@
 import { cn } from '@/src/lib/tailwind/utils';
 
-/**
- * Primary navigation. These are intentionally generic placeholder destinations
- * (not tonomo's real menu) and are non-functional for this exercise, so they
- * render as plain hash anchors. Colors inherit `currentColor` so the links track
- * the header's transparent/solid states.
- */
-const LINKS = [
-  { label: 'Journal', href: '#' },
-  { label: 'Field Guides', href: '#' },
-  { label: 'Playbooks', href: '#' },
-  { label: 'About', href: '#' },
-];
+import { PRIMARY_NAV_LINKS } from './constants';
 
-export function NavLinks({ className }: { className?: string }) {
+type NavLinksProps = {
+  className?: string;
+};
+
+/**
+ * Primary navigation (desktop). Links inherit `currentColor` so they track the
+ * header text color. The same destinations render vertically in the mobile nav
+ * drawer (see `NavMenuButton`).
+ */
+export function NavLinks({ className }: NavLinksProps) {
   return (
     <nav aria-label='Primary' className={cn('items-center gap-7 text-sm font-medium', className)}>
-      {LINKS.map((link) => (
+      {PRIMARY_NAV_LINKS.map((link) => (
         <a
           key={link.label}
           href={link.href}
