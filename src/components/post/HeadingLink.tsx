@@ -16,15 +16,25 @@ type HeadingLinkProps = {
 /**
  * Article heading that reveals a self-link on hover. `rehype-slug` gives every
  * heading an `id`, which spreads onto the element (the scroll/anchor target) and
- * drives the `#id` href. `scroll-mt-24` keeps a jumped-to heading clear of the
- * sticky header. No client JS: the native anchor updates the URL + scrolls, and
- * the slide/fade is pure CSS driven by the heading's `group` hover.
+ * drives the `#id` href. `scroll-mt` keeps a jumped-to heading clear of the
+ * sticky header (and, below `lg`, the mobile table-of-contents bar beneath it).
+ * The slide/fade self-link is pure CSS driven by the heading's `group` hover.
  */
 export function HeadingLink({ level, id, className, children, ...props }: HeadingLinkProps) {
   const Heading = HEADINGS[level];
 
   return (
-    <Heading id={id} className={cn('group scroll-mt-24', className)} {...props}>
+    <Heading
+      id={id}
+      className={cn(
+        `
+          group scroll-mt-28
+          lg:scroll-mt-24
+        `,
+        className,
+      )}
+      {...props}
+    >
       {children}
       {id && (
         <a
