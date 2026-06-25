@@ -30,6 +30,35 @@
   }
 }
 
+/* Shared-element morph: a related-card cover grows into the article cover. */
+::view-transition-group(.morph) {
+  animation-duration: var(--duration-move);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: cover-blur;
+}
+@keyframes cover-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+/*
+ * Anchor the sticky header across navigations. Its `view-transition-name`
+ * pulls it into its own group; freezing that group keeps it from sliding, and
+ * hiding the old snapshot avoids a double-header flash (relevant to Rule D).
+ */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(*),
   ::view-transition-new(*),
