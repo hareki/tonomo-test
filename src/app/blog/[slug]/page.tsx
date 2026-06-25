@@ -2,8 +2,8 @@ import { ViewTransition } from 'react';
 
 import { notFound } from 'next/navigation';
 
+import { SiteMobileBar } from '@/src/components/layout/SiteMobileBar';
 import { CoverImage } from '@/src/features/blog/components/CoverImage';
-import { MobileTocBar } from '@/src/features/blog/components/MobileTocBar';
 import { PostBody } from '@/src/features/blog/components/PostBody';
 import { PostHeader } from '@/src/features/blog/components/PostHeader';
 import { PostLayout } from '@/src/features/blog/components/PostLayout';
@@ -59,8 +59,7 @@ export default async function PostPage({ params }: PostPageProps) {
     // Keyed by slug so post-to-post navigation (same dynamic route) remounts and
     // the `.page` fade fires; the cover's shared morph runs alongside it.
     <ViewTransition key={post.slug} enter='page' exit='page' default='none'>
-      {/* Mobile-only secondary header with the table-of-contents drawer trigger. */}
-      <MobileTocBar entries={toc} />
+      <SiteMobileBar slug={slug} />
 
       <PostLayout
         article={

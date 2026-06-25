@@ -1,6 +1,5 @@
 import { Button as ButtonPrimitive } from '@base-ui/react/button';
 
-
 import { cn } from '@/src/lib/tailwind/utils';
 
 import { buttonVariants } from './variants';

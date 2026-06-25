@@ -14,8 +14,8 @@ export function PostLayout({ article, sidebar }: PostLayoutProps) {
         lg:mt-14 lg:grid-cols-[minmax(0,1fr)_15rem] lg:px-8
       `}
     >
-      <article className='min-w-0'>
-        <div className='max-w-2xl'>{article}</div>
+      <article>
+        <div className='mx-auto max-w-2xl'>{article}</div>
       </article>
 
       <aside
