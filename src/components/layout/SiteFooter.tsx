@@ -1,4 +1,4 @@
-import { TonomoLogo } from '@/app/components/ui/TonomoLogo';
+import { TonomoLogo } from '@/src/components/ui/TonomoLogo';
 
 // Static so the footer stays prerenderable under Cache Components (reading the
 // live clock in a server component would opt every post page out of static).

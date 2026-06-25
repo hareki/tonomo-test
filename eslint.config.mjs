@@ -222,7 +222,7 @@ const eslintConfig = defineConfig([
     },
     settings: {
       'better-tailwindcss': {
-        entryPoint: 'app/styles/index.css',
+        entryPoint: 'src/styles/index.css',
         selectors: [
           ...getDefaultSelectors(),
           {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { cn } from '@/app/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/cn';
 
 type AvatarProps = {
   src: string;

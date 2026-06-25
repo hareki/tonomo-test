@@ -1,5 +1,5 @@
-import { H2 } from '@/app/components/ui/Typography';
-import type { Post } from '@/app/lib/posts/types';
+import { H2 } from '@/src/components/ui/Typography';
+import type { Post } from '@/src/lib/posts/types';
 
 import { RelatedArticleCard } from './RelatedArticleCard';
 

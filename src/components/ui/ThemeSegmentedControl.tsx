@@ -5,8 +5,8 @@ import { RadioGroup } from '@base-ui/react/radio-group';
 import { IconDeviceDesktop, IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from '@teispace/next-themes';
 
-import { useHydrated } from '@/app/hooks/useHydrated';
-import { cn } from '@/app/lib/tailwind/cn';
+import { useHydrated } from '@/src/hooks/useHydrated';
+import { cn } from '@/src/lib/tailwind/cn';
 
 const OPTIONS = [
   { value: 'light', label: 'Light theme', Icon: IconSun },

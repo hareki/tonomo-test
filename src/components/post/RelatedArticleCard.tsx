@@ -3,10 +3,10 @@ import { ViewTransition } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Avatar } from '@/app/components/ui/Avatar';
-import { H3 } from '@/app/components/ui/Typography';
-import { formatPublishedDate } from '@/app/lib/posts/queries';
-import type { Post } from '@/app/lib/posts/types';
+import { Avatar } from '@/src/components/ui/Avatar';
+import { H3 } from '@/src/components/ui/Typography';
+import { formatPublishedDate } from '@/src/lib/posts/queries';
+import type { Post } from '@/src/lib/posts/types';
 
 /**
  * A real, navigable card for another post. The cover shares its `name` with the

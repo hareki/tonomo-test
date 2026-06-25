@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-import { Blockquote } from '@/app/components/ui/Typography';
+import { Blockquote } from '@/src/components/ui/Typography';
 
 type QuoteProps = {
   cite?: string;

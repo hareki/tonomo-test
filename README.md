@@ -40,7 +40,7 @@ two-column desktop layout.
 ## Architecture
 
 ```
-app/
+src/
   layout.tsx                  Root: fonts + ThemeProvider, <html data-theme>
   (app)/
     layout.tsx                Shell: skip link, sticky header, <main>, footer
@@ -63,7 +63,7 @@ proxy.ts                      Redirects `/` to a random post
 A few choices worth calling out:
 
 - **Typed content model, not MDX.** Each post is a typed object (`Post → Section[] → ContentBlock[]`)
-  in `app/lib/posts/data.ts`. The table of contents is **derived** from section headings
+  in `src/lib/posts/data.ts`. The table of contents is **derived** from section headings
   (`getToc`), so headings and the TOC can never drift apart, and reading time is computed from the
   real body text (`readingTime`, 200 wpm, rounded up). `BlockRenderer` maps the typed block union
   onto the `Typography` primitives.
@@ -72,7 +72,7 @@ A few choices worth calling out:
 - **Server-first.** Pages are Server Components and statically prerendered; `'use client'` is used
   only where interaction requires it (header scroll state, TOC scroll-sync, theme control). React
   Compiler handles memoization, so there is no manual `useMemo`/`useCallback`.
-- **Theming.** `app/styles/theme.css` was stripped to only the tokens this app uses and rebased onto
+- **Theming.** `src/styles/theme.css` was stripped to only the tokens this app uses and rebased onto
   **Tailwind's stock palette** (slate neutrals + a blue accent) instead of the original catppuccin
   set, with light values on `:root` and overrides under `[data-theme="dark"]` (plus `color-scheme`).
 - **Random redirect via proxy.** `/` has no page; `proxy.ts` issues a per-request `307` to a random
@@ -97,7 +97,7 @@ A few choices worth calling out:
 Navigating from a Related Articles card uses React's `<ViewTransition>` (same-document, enabled via
 `experimental.viewTransition`). The card's cover **morphs** into the destination article's cover
 (shared element, `name="post-cover-<slug>"`), the page fades and rises (the `.page` recipe in
-`app/styles/view-transition.css`), and the header is anchored so it doesn't flash or slide.
+`src/styles/view-transition.css`), and the header is anchored so it doesn't flash or slide.
 
 ## Intentional deviations from the reference
 
@@ -119,8 +119,8 @@ so it stays legible in every scroll state.
 
 ## Reused brand assets
 
-The **navbar wordmark** (`app/assets/tonomo-navbar-logo.svg`, inlined as `TonomoLogo` so it can be
-tinted with `currentColor`) and the **favicon** (`app/favicon.png`) are **tonomo's own brand
+The **navbar wordmark** (`src/assets/tonomo-navbar-logo.svg`, inlined as `TonomoLogo` so it can be
+tinted with `currentColor`) and the **favicon** (`src/favicon.png`) are **tonomo's own brand
 assets**, reused here for this exercise. They are not original to this submission. All other imagery
 is realistic placeholder content from [Picsum](https://picsum.photos) (seeded so it stays stable),
 served through `next/image` with explicit dimensions to preserve aspect ratio without layout shift.

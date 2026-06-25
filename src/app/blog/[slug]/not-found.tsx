@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { HEADER_SENTINEL_ID } from '@/app/components/layout/SiteHeader';
-import { getAllPosts } from '@/app/lib/posts/queries';
+import { HEADER_SENTINEL_ID } from '@/src/components/layout/SiteHeader';
+import { getAllPosts } from '@/src/lib/posts/queries';
 
 export default function PostNotFound() {
   const posts = getAllPosts();

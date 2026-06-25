@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef, ElementType } from 'react';
 
-import { cn } from '@/app/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/cn';
 
 type PolymorphicProps<T extends ElementType> = {
   as?: T;

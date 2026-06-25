@@ -1,8 +1,8 @@
-import { Figure } from '@/app/components/post/Figure';
-import { HeadingLink } from '@/app/components/post/HeadingLink';
-import { Quote } from '@/app/components/post/Quote';
-import { Blockquote, InlineCode, List, P } from '@/app/components/ui/Typography';
-import { cn } from '@/app/lib/tailwind/cn';
+import { Figure } from '@/src/components/post/Figure';
+import { HeadingLink } from '@/src/components/post/HeadingLink';
+import { Quote } from '@/src/components/post/Quote';
+import { Blockquote, InlineCode, List, P } from '@/src/components/ui/Typography';
+import { cn } from '@/src/lib/tailwind/cn';
 
 import type { MDXComponents } from 'mdx/types';
 

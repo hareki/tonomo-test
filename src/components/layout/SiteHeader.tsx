@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 
-import { ThemeSegmentedControl } from '@/app/components/ui/ThemeSegmentedControl';
-import { TonomoLogo } from '@/app/components/ui/TonomoLogo';
-import { useScrolledPast } from '@/app/hooks/useScrolledPast';
-import { cn } from '@/app/lib/tailwind/cn';
+import { ThemeSegmentedControl } from '@/src/components/ui/ThemeSegmentedControl';
+import { TonomoLogo } from '@/src/components/ui/TonomoLogo';
+import { useScrolledPast } from '@/src/hooks/useScrolledPast';
+import { cn } from '@/src/lib/tailwind/cn';
 
 import { NavLinks } from './NavLinks';
 

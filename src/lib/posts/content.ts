@@ -18,7 +18,7 @@ import type { TocEntry } from './types';
  */
 
 const WORDS_PER_MINUTE = 200;
-const CONTENT_DIR = path.join(process.cwd(), 'app/lib/posts/content');
+const CONTENT_DIR = path.join(process.cwd(), 'src/lib/posts/content');
 
 // Heading levels included in the table of contents (h2 through h4).
 const TOC_MIN_DEPTH = 2;

@@ -1,5 +1,5 @@
-import { HEADER_SENTINEL_ID } from '@/app/components/layout/SiteHeader';
-import type { Post } from '@/app/lib/posts/types';
+import { HEADER_SENTINEL_ID } from '@/src/components/layout/SiteHeader';
+import type { Post } from '@/src/lib/posts/types';
 
 import { PostByline } from './PostByline';
 import { ShareLinks } from './ShareLinks';
