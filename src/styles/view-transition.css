@@ -4,14 +4,12 @@
   --duration-page-enter: 240ms;
 }
 
-/* Subtle page transition between (app) routes: old fades out, new fades and rises in */
+/* Subtle page transition between (app) routes: old fades out, new fades in. */
 ::view-transition-old(.page) {
   animation: var(--duration-page-exit) ease-in both page-fade-out;
 }
 ::view-transition-new(.page) {
-  animation:
-    var(--duration-page-enter) ease-out var(--duration-page-exit) both page-fade-in,
-    var(--duration-page-enter) ease-out var(--duration-page-exit) both page-rise;
+  animation: var(--duration-page-enter) ease-out var(--duration-page-exit) both page-fade-in;
 }
 
 @keyframes page-fade-out {
@@ -22,11 +20,6 @@
 @keyframes page-fade-in {
   from {
     opacity: 0;
-  }
-}
-@keyframes page-rise {
-  from {
-    translate: 0 8px;
   }
 }
 
