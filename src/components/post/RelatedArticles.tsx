@@ -1,9 +1,9 @@
 import { H2 } from '@/src/components/ui/Typography';
-import type { Post } from '@/src/lib/posts/types';
+import type { PostMetadata } from '@/src/features/blog/types';
 
 import { RelatedArticleCard } from './RelatedArticleCard';
 
-export function RelatedArticles({ posts }: { posts: Post[] }) {
+export function RelatedArticles({ posts }: { posts: PostMetadata[] }) {
   if (posts.length === 0) {
     return null;
   }

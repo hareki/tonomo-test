@@ -1,4 +1,4 @@
-import type { Author, Post } from './types';
+import type { Author, PostMetadata } from './types';
 
 const mara: Author = {
   name: 'Mara Whitfield',
@@ -18,7 +18,7 @@ const devin: Author = {
  * table of contents and reading time are derived from that file (see
  * `./content.ts`).
  */
-export const posts: Post[] = [
+export const postMetadataItems: PostMetadata[] = [
   {
     slug: 'pricing-on-value-not-hours',
     title: 'Pricing on Value, Not Hours',

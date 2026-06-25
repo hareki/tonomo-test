@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ThemeSegmentedControl } from '@/src/components/ui/ThemeSegmentedControl';
 import { TonomoLogo } from '@/src/components/ui/TonomoLogo';
 import { useScrolledPast } from '@/src/hooks/useScrolledPast';
-import { cn } from '@/src/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/utils';
 
 import { NavLinks } from './NavLinks';
 

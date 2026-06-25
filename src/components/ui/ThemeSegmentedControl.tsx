@@ -6,7 +6,7 @@ import { IconDeviceDesktop, IconMoon, IconSun } from '@tabler/icons-react';
 import { useTheme } from '@teispace/next-themes';
 
 import { useHydrated } from '@/src/hooks/useHydrated';
-import { cn } from '@/src/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/utils';
 
 const OPTIONS = [
   { value: 'light', label: 'Light theme', Icon: IconSun },

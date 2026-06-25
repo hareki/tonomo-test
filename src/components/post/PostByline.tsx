@@ -1,6 +1,6 @@
 import { Avatar } from '@/src/components/ui/Avatar';
-import { formatPublishedDate } from '@/src/lib/posts/queries';
-import type { Post } from '@/src/lib/posts/types';
+import { formatPublishedDate } from '@/src/features/blog/queries';
+import type { PostMetadata } from '@/src/features/blog/types';
 
 function Separator() {
   return (
@@ -15,7 +15,13 @@ function Separator() {
  * lives beside the date rather than in the sidebar). Inherits `currentColor`, so
  * it reads as white in the hero.
  */
-export function PostByline({ post, readingMinutes }: { post: Post; readingMinutes: number }) {
+export function PostByline({
+  post,
+  readingMinutes,
+}: {
+  post: PostMetadata;
+  readingMinutes: number;
+}) {
   return (
     <div className='flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm'>
       <span className='flex items-center gap-2 font-medium'>

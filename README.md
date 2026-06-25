@@ -128,7 +128,7 @@ served through `next/image` with explicit dimensions to preserve aspect ratio wi
 ## Trade-offs / what I'd do next
 
 - Content lives in a typed in-memory module; a real blog would move this behind a CMS or the
-  filesystem. The typed-model boundary (`lib/posts`) is designed so that swap is localized.
+  filesystem. The typed-model boundary (`features/posts`) is designed so that swap is localized.
 - Share buttons and the top-nav links are intentional non-functional placeholders (with their own
   generic labels, not tonomo's real menu).
 - With more time: per-post OG images, a prev/next reader at the foot of the article, and a small

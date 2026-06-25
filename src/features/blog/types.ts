@@ -11,7 +11,7 @@ export type Image = {
   height: number;
 };
 
-export type Post = {
+export type PostMetadata = {
   /** Slug doubles as the stable post id, and names the MDX body file. */
   slug: string;
   title: string;

@@ -8,8 +8,8 @@ import { PostHero } from '@/src/components/post/PostHero';
 import { PostLayout } from '@/src/components/post/PostLayout';
 import { RelatedArticles } from '@/src/components/post/RelatedArticles';
 import { TableOfContents } from '@/src/components/post/TableOfContents';
-import { getPostAnalysis } from '@/src/lib/posts/content';
-import { getAllSlugs, getPost, getRelatedPosts } from '@/src/lib/posts/queries';
+import { getPostAnalysis } from '@/src/features/blog/content';
+import { getAllSlugs, getPost, getRelatedPosts } from '@/src/features/blog/queries';
 
 import type { Metadata } from 'next';
 
@@ -48,7 +48,7 @@ export default async function PostPage({ params }: { params: Promise<Params> }) 
     notFound();
   }
 
-  const { default: Content } = await import(`@/src/lib/posts/content/${slug}.mdx`);
+  const { default: Content } = await import(`@/src/features/blog/content/${slug}.mdx`);
   const { toc, minutes } = await getPostAnalysis(slug);
   const related = getRelatedPosts(post.slug);
 

@@ -1,4 +1,4 @@
-import { cn } from '@/src/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/utils';
 
 /**
  * Primary navigation. These are intentionally generic placeholder destinations

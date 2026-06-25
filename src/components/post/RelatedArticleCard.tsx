@@ -5,15 +5,15 @@ import Link from 'next/link';
 
 import { Avatar } from '@/src/components/ui/Avatar';
 import { H3 } from '@/src/components/ui/Typography';
-import { formatPublishedDate } from '@/src/lib/posts/queries';
-import type { Post } from '@/src/lib/posts/types';
+import { formatPublishedDate } from '@/src/features/blog/queries';
+import type { PostMetadata } from '@/src/features/blog/types';
 
 /**
  * A real, navigable card for another post. The cover shares its `name` with the
  * destination article's cover, so clicking it morphs the thumbnail up into the
  * full cover instead of cutting between unrelated pages.
  */
-export function RelatedArticleCard({ post }: { post: Post }) {
+export function RelatedArticleCard({ post }: { post: PostMetadata }) {
   return (
     <article className='group flex flex-col'>
       <Link

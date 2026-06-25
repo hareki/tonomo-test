@@ -2,7 +2,7 @@ import { ViewTransition } from 'react';
 
 import Image from 'next/image';
 
-import type { Image as PostImage } from '@/src/lib/posts/types';
+import type { Image as PostImage } from '@/src/features/blog/types';
 
 type CoverImageProps = {
   /** Used to pair this cover with the related-card cover for the shared morph. */

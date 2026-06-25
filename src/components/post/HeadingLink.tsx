@@ -3,7 +3,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 import { IconLink } from '@tabler/icons-react';
 
 import { H2, H3, H4 } from '@/src/components/ui/Typography';
-import { cn } from '@/src/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/utils';
 
 const HEADINGS = { 2: H2, 3: H3, 4: H4 } as const;
 

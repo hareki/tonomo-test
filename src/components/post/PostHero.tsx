@@ -1,5 +1,5 @@
 import { HEADER_SENTINEL_ID } from '@/src/components/layout/SiteHeader';
-import type { Post } from '@/src/lib/posts/types';
+import type { PostMetadata } from '@/src/features/blog/types';
 
 import { PostByline } from './PostByline';
 import { ShareLinks } from './ShareLinks';
@@ -10,7 +10,7 @@ import { ShareLinks } from './ShareLinks';
  * Text is always white for contrast against the blue gradient. A zero-height
  * sentinel at the bottom edge tells the header when to switch to its solid state.
  */
-export function PostHero({ post, readingMinutes }: { post: Post; readingMinutes: number }) {
+export function PostHero({ post, readingMinutes }: { post: PostMetadata; readingMinutes: number }) {
   return (
     <section
       className='

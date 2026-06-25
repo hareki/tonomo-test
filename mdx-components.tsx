@@ -2,7 +2,7 @@ import { Figure } from '@/src/components/post/Figure';
 import { HeadingLink } from '@/src/components/post/HeadingLink';
 import { Quote } from '@/src/components/post/Quote';
 import { Blockquote, InlineCode, List, P } from '@/src/components/ui/Typography';
-import { cn } from '@/src/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/utils';
 
 import type { MDXComponents } from 'mdx/types';
 

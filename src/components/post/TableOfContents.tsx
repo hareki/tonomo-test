@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import type { TocEntry } from '@/src/features/blog/types';
 import { useActiveSection } from '@/src/hooks/useActiveSection';
-import type { TocEntry } from '@/src/lib/posts/types';
-import { cn } from '@/src/lib/tailwind/cn';
+import { cn } from '@/src/lib/tailwind/utils';
 
 // Left padding per nesting level (relative to the shallowest heading present).
 // Tailwind needs literal class names, so deeper levels clamp to the last entry.
