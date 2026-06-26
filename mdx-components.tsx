@@ -2,7 +2,7 @@ import { isValidElement } from 'react';
 import type { ReactNode } from 'react';
 
 import { CodeBlock } from '@/src/components/ui/CodeBlock';
-import { Blockquote, InlineCode, List, P } from '@/src/components/ui/Typography';
+import { Blockquote, InlineCode, InlineLink, List, P } from '@/src/components/ui/Typography';
 import { Figure } from '@/src/features/blog-post/components/Figure';
 import { HeadingLink } from '@/src/features/blog-post/components/HeadingLink';
 import { Quote } from '@/src/features/blog-post/components/Quote';
@@ -49,20 +49,7 @@ const components: MDXComponents = {
     <List as='ol' className={cn('list-decimal', className)} {...props} />
   ),
   blockquote: ({ className, ...props }) => <Blockquote className={className} {...props} />,
-  a: ({ className, children, ...props }) => (
-    <a
-      className={cn(
-        `
-          font-medium text-primary underline-offset-4
-          hover:underline
-        `,
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </a>
-  ),
+  a: ({ className, ...props }) => <InlineLink className={className} {...props} />,
   // Block code is intercepted at `pre` (below) and rendered through `CodeBlock`,
   // so `code` only ever handles inline code and always gets the pill treatment.
   code: ({ className, ...props }) => <InlineCode className={className} {...props} />,

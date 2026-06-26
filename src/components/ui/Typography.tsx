@@ -175,7 +175,38 @@ export function InlineCode<T extends ElementType = 'code'>({
     <Comp
       data-slot='inline-code'
       className={cn(
-        'rounded-sm bg-muted px-1.5 py-0.5 font-mono text-[0.875em] text-foreground',
+        'rounded-sm bg-muted px-1.5 py-0.5 font-mono text-[0.875em] font-medium text-foreground',
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export function InlineLink<T extends ElementType = 'a'>({
+  as,
+  className,
+  ...props
+}: PolymorphicProps<T>) {
+  const Comp = as ?? 'a';
+
+  return (
+    <Comp
+      data-slot='inline-link'
+      target='_blank'
+      rel='noopener noreferrer'
+      referrerPolicy='no-referrer'
+      className={cn(
+        `
+          relative inline font-medium text-primary
+          after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left
+          after:scale-x-0 after:bg-current after:transition-transform after:duration-300
+          after:ease-out
+          hover:after:scale-x-100
+          focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4
+          focus-visible:outline-current
+          motion-reduce:after:transition-none
+        `,
         className,
       )}
       {...props}
