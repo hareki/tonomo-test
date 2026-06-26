@@ -65,11 +65,13 @@ export default async function PostPage({ params }: PostPageProps) {
         article={
           <div className='space-y-8'>
             <CoverImage slug={post.slug} image={post.cover} />
-            <PostHeader post={post} readingMinutes={minutes} />
-            <hr className='border-border' />
-            <PostBody>
-              <Content />
-            </PostBody>
+            <div className='max-w-prose space-y-8'>
+              <PostHeader post={post} readingMinutes={minutes} />
+              <hr className='border-border' />
+              <PostBody>
+                <Content />
+              </PostBody>
+            </div>
           </div>
         }
         sidebar={<TableOfContents entries={toc} />}

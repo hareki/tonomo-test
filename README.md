@@ -118,7 +118,7 @@ and the test sketch informed the editorial feel, but the layout is deliberately 
   right-side drawer, keeping the reading column uninterrupted while leaving the TOC one tap away.
 - **Related posts section.** Not in the reference or the test sketch, but a real blog page rarely
   ends at the article body. It's also there to ensure the post content itself demonstrates the full
-  range of supported content types: headings, paragraphs, blockquotes, lists, inline code, and
+  range of supported content types: headings, paragraphs, blockquotes, lists, inline code, and fenced
   code blocks with syntax highlighting.
 
 ## Trade-offs

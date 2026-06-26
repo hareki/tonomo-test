@@ -14,8 +14,8 @@ export function NavLinks({ className }: NavLinksProps) {
           key={link.label}
           href={link.href}
           className={`
-            text-current/80 transition-colors
-            hover:text-current
+            text-foreground transition-colors
+            hover:text-primary
             focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4
             focus-visible:outline-current
           `}

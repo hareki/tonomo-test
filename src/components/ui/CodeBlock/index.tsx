@@ -22,8 +22,8 @@ export async function CodeBlock({ code, lang }: CodeBlockProps) {
           flex items-center justify-between gap-2 border-b border-border bg-muted py-1 pr-1.5 pl-4
         `}
       >
-        <span className='font-mono text-xs tracking-wide text-muted-foreground'>
-          {lang && lang !== 'text' ? lang : ''}
+        <span className='font-mono text-xs font-medium tracking-wide text-muted-foreground'>
+          {lang}
         </span>
         <CopyButton code={code} />
       </div>

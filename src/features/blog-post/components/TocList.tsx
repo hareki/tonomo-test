@@ -106,7 +106,7 @@ export function TocList({ entries, activeId, onSelect }: TocListProps) {
                     ? 'text-primary'
                     : `
                       text-muted-foreground
-                      hover:text-foreground
+                      hover:text-primary
                     `,
                 )}
               >

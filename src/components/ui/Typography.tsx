@@ -57,7 +57,16 @@ export function H3<T extends ElementType = 'h3'>({ as, className, ...props }: Po
 export function H4<T extends ElementType = 'h4'>({ as, className, ...props }: PolymorphicProps<T>) {
   const Comp = as ?? 'h4';
 
-  return <Comp data-slot='h4' className={cn('text-lg font-semibold', className)} {...props} />;
+  return (
+    <Comp
+      data-slot='h4'
+      className={cn(
+        'text-sm font-semibold tracking-wide text-muted-foreground uppercase',
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 export function Lead<T extends ElementType = 'p'>({

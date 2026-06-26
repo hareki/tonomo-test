@@ -26,14 +26,19 @@ export function RelatedPostCard({ post }: RelatedPostCardProps) {
         `}
       >
         <ViewTransition name={`post-cover-${post.slug}`} share='morph'>
-          <Image
-            src={post.cover.src}
-            alt={post.cover.alt}
-            width={post.cover.width}
-            height={post.cover.height}
-            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-            className='aspect-video w-full object-cover'
-          />
+          <div className='aspect-video w-full overflow-hidden'>
+            <Image
+              src={post.cover.src}
+              alt={post.cover.alt}
+              width={post.cover.width}
+              height={post.cover.height}
+              sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+              className={`
+                object-cover transition-transform duration-500 ease-in-out
+                group-hover:scale-110
+              `}
+            />
+          </div>
         </ViewTransition>
 
         <div className='flex flex-1 flex-col justify-between p-5'>
