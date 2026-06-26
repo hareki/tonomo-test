@@ -1,6 +1,6 @@
 ## What Changed and Why It Matters
 
-Next.js 17 is the largest release since the App Router landed in version 13. Three bets that were experimental are now stable and on by default: Turbopack replaces Webpack as the dev bundler, the fetch cache flips to opt-in rather than opt-out, and the `after()` API graduates out of the flag. Each one has a migration cost. This guide covers all three in the order you will most likely hit them.
+Next.js 17 is the largest release since the App Router landed in version 13. Three bets that were experimental are now stable and on by default: [Turbopack](https://nextjs.org/docs/app/api-reference/turbopack) replaces Webpack as the dev bundler, the fetch cache flips to opt-in rather than opt-out, and the `after()` API graduates out of the flag. Each one has a migration cost. This guide covers all three in the order you will most likely hit them.
 
 ## Turbopack Is Now the Default
 
@@ -92,7 +92,7 @@ For route-level defaults, use `export const fetchCache = 'default-cache'` at the
 
 ## The after() API
 
-`after()` lets you run code after the response has been sent to the client. The use case it was designed for is fire-and-forget work: logging, analytics, cache warming, and webhook calls that the user should not have to wait on.
+[`after()`](https://nextjs.org/docs/app/api-reference/functions/after) lets you run code after the response has been sent to the client. The use case it was designed for is fire-and-forget work: logging, analytics, cache warming, and webhook calls that the user should not have to wait on.
 
 ### Basic Usage
 

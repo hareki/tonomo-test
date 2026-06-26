@@ -32,7 +32,7 @@ pnpm create react-app@latest my-app --template minimal
 
 ### Your First Component
 
-A React component is a function that returns markup. In React 20, the default is server components - they run on the server and send HTML to the browser with no JavaScript bundle cost:
+A React component is a function that returns markup. In React 20, the default is [server components](https://react.dev/reference/rsc/server-components) - they run on the server and send HTML to the browser with no JavaScript bundle cost:
 
 ```tsx
 export default function Greeting({ name }: { name: string }) {
@@ -51,7 +51,7 @@ No imports, no boilerplate. The JSX transforms automatically. Mark a component `
 
 ### The useState Hook
 
-Client components manage local state with `useState`. The API is unchanged from previous versions, which is intentional - React 20 adds new things without removing the foundations:
+Client components manage local state with [`useState`](https://react.dev/reference/react/useState). The API is unchanged from previous versions, which is intentional - React 20 adds new things without removing the foundations:
 
 ```tsx
 'use client';
