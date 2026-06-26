@@ -13,7 +13,7 @@ export const metadata: PostMetadata = {
   publishedAt: '2026-05-12',
   tags: ['Pricing', 'Strategy'],
   cover: {
-    src: 'https://picsum.photos/seed/pricing-on-value-cover/1600/900',
+    src: 'https://picsum.photos/seed/pricing-on-value-not-hours/1600/900',
     alt: 'A real estate photographer reviewing images on a laptop in a sunlit living room.',
     width: 1600,
     height: 900,
