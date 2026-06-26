@@ -12,11 +12,12 @@ import { cn } from '@/src/lib/tailwind/utils';
  * Side drawers read vaul's `data-vaul-drawer-direction`, so a single `Content`
  * styles both the left (nav) and right (table of contents) panels.
  */
-export const Drawer = DrawerPrimitive.Root;
-export const DrawerTrigger = DrawerPrimitive.Trigger;
-export const DrawerClose = DrawerPrimitive.Close;
-export const DrawerTitle = DrawerPrimitive.Title;
-export const DrawerDescription = DrawerPrimitive.Description;
+const { Root, Trigger, Close, Title } = DrawerPrimitive;
+
+export const Drawer = Root;
+export const DrawerTrigger = Trigger;
+export const DrawerClose = Close;
+export const DrawerTitle = Title;
 
 export function DrawerContent({
   className,

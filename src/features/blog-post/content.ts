@@ -28,7 +28,7 @@ const TOC_MAX_DEPTH = 4;
 // becomes structured nodes instead of raw text, keeping the word count honest.
 const parser = unified().use(remarkParse).use(remarkMdx);
 
-export function loadPostSource(slug: string): Promise<string> {
+function loadPostSource(slug: string): Promise<string> {
   return readFile(path.join(POSTS_DIR, slug, 'content.mdx'), 'utf8');
 }
 
@@ -50,7 +50,7 @@ export async function getPostAnalysis(slug: string): Promise<PostAnalysis> {
 }
 
 /** Parses the MDX body once to derive its table of contents and reading time. */
-export function analyzePost(source: string): PostAnalysis {
+function analyzePost(source: string): PostAnalysis {
   const tree = parser.parse(source);
   const slugger = new GithubSlugger();
   const toc: TocEntry[] = [];

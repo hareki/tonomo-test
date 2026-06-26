@@ -121,8 +121,7 @@ card-click navigation resets scroll instantly and never competes with the morph.
 
 ## Reused brand assets
 
-The **navbar wordmark** (`src/assets/tonomo-navbar-logo.svg`, inlined as `TonomoLogo` so it can be
-tinted with `currentColor`) and the **favicon** (`src/favicon.png`) are **tonomo's own brand
+The **navbar wordmark** and the **favicon** (`src/favicon.png`) are **tonomo's own brand
 assets**, reused here for this exercise. They are not original to this submission. All other imagery
 is placeholder content from [Picsum](https://picsum.photos) (seeded so it stays stable), served
 through `next/image` with explicit dimensions to preserve aspect ratio without layout shift.

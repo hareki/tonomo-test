@@ -9,7 +9,6 @@ type AvatarProps = {
   className?: string;
 };
 
-/** Round, fixed-size author image. Decorative ring adapts to the theme. */
 export function Avatar({ src, alt, size = 40, className }: AvatarProps) {
   return (
     <Image

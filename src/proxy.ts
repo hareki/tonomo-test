@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-import { getAllSlugs } from '@/src/features/blog-post/queries';
+import { getRandomSlug } from '@/src/features/blog-post/queries';
 
 /**
  * The site has no landing page; `/` sends each visitor to a random post. Doing
@@ -9,8 +9,7 @@ import { getAllSlugs } from '@/src/features/blog-post/queries';
  * postpone the redirect.
  */
 export function proxy(request: NextRequest) {
-  const slugs = getAllSlugs();
-  const slug = slugs[Math.floor(Math.random() * slugs.length)];
+  const slug = getRandomSlug();
 
   return NextResponse.redirect(new URL(`/blog/${slug}`, request.url));
 }

@@ -6,13 +6,6 @@ type PolymorphicProps<T extends ElementType> = {
   as?: T;
 } & Omit<ComponentPropsWithoutRef<T>, 'as'>;
 
-/**
- * Editorial typography primitives. Each renders a sensible semantic element by
- * default but accepts `as` for cases where the visual style and the semantics
- * need to diverge. Styles live here so the rest of the app composes meaning,
- * not utility-class soup.
- */
-
 export function H1<T extends ElementType = 'h1'>({ as, className, ...props }: PolymorphicProps<T>) {
   const Comp = as ?? 'h1';
 
