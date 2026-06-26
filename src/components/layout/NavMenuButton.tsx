@@ -13,11 +13,6 @@ import {
 
 import { PRIMARY_NAV_LINKS } from './constants';
 
-/**
- * Compact navigation for narrow viewports: a burger button that opens a left
- * drawer holding the primary links (the same destinations the desktop `NavLinks`
- * renders inline). Shown in place of the inline nav below `md`.
- */
 export function NavMenuButton() {
   return (
     <Drawer direction='left'>

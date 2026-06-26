@@ -6,11 +6,6 @@ type NavLinksProps = {
   className?: string;
 };
 
-/**
- * Primary navigation (desktop). Links inherit `currentColor` so they track the
- * header text color. The same destinations render vertically in the mobile nav
- * drawer (see `NavMenuButton`).
- */
 export function NavLinks({ className }: NavLinksProps) {
   return (
     <nav aria-label='Primary' className={cn('items-center gap-7 text-sm font-medium', className)}>

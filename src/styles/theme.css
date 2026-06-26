@@ -37,11 +37,6 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/*
- * Light theme. Tailwind v4 exposes its stock palette as `--color-*` custom
- * properties, so the design tokens below are plain references into that palette
- * (slate neutrals + a blue accent) rather than a bespoke set of hex values.
- */
 :root {
   --background: var(--color-white);
   --foreground: var(--color-slate-900);
