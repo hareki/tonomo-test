@@ -1,15 +1,30 @@
 import { TonomoLogo } from '@/src/components/icons/TonomoLogo';
+import { cn } from '@/src/lib/tailwind/utils';
 
+import { FOOTER_LINKS } from './constants';
 import { Badge } from '../ui/Badge';
+import { NavLink } from '../ui/NavLink';
 
-// Static so the footer stays prerenderable under Cache Components (reading the
-// live clock in a server component would opt every post page out of static).
 const COPYRIGHT_YEAR = 2026;
 
-const FOOTER_LINKS = [
-  { label: 'Terms and Conditions', href: '#' },
-  { label: 'Privacy Policy', href: '#' },
-];
+type FooterLinksProps = {
+  className?: string;
+};
+
+export function FooterLinks({ className }: FooterLinksProps) {
+  return (
+    <nav
+      aria-label='Footer'
+      className={cn('flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium', className)}
+    >
+      {FOOTER_LINKS.map((link) => (
+        <NavLink key={link.label} href={link.href}>
+          {link.label}
+        </NavLink>
+      ))}
+    </nav>
+  );
+}
 
 export function SiteFooter() {
   return (
@@ -32,22 +47,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <nav aria-label='Footer' className='flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium'>
-          {FOOTER_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={`
-                text-muted-foreground transition-colors
-                hover:text-foreground
-                focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4
-                focus-visible:outline-ring
-              `}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        <FooterLinks />
       </div>
     </footer>
   );

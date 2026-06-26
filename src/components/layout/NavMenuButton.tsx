@@ -11,7 +11,8 @@ import {
   DrawerTrigger,
 } from '@/src/components/ui/Drawer';
 
-import { PRIMARY_NAV_LINKS } from './constants';
+import { HEADER_LINKS } from './constants';
+import { NavLink } from '../ui/NavLink';
 
 export function NavMenuButton() {
   return (
@@ -32,18 +33,11 @@ export function NavMenuButton() {
         </div>
 
         <nav aria-label='Primary' className='flex flex-col p-3'>
-          {PRIMARY_NAV_LINKS.map((link) => (
+          {HEADER_LINKS.map((link) => (
             <DrawerClose key={link.label} asChild>
-              <a
-                href={link.href}
-                className={`
-                  rounded-md px-3 py-2.5 text-base font-medium text-foreground transition-colors
-                  hover:bg-muted
-                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring
-                `}
-              >
+              <NavLink href={link.href} className='px-3 py-2.5'>
                 {link.label}
-              </a>
+              </NavLink>
             </DrawerClose>
           ))}
         </nav>

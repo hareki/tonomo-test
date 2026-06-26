@@ -2,12 +2,30 @@ import Link from 'next/link';
 
 import { TonomoLogo } from '@/src/components/icons/TonomoLogo';
 import { Badge } from '@/src/components/ui/Badge';
+import { cn } from '@/src/lib/tailwind/utils';
 
-import { NavLinks } from './NavLinks';
+import { HEADER_LINKS } from './constants';
 import { NavMenuButton } from './NavMenuButton';
+import { NavLink } from '../ui/NavLink';
 import { ThemeSwitcher } from '../ui/ThemeSwitcher';
 
 import type { Route } from 'next';
+
+type NavLinksProps = {
+  className?: string;
+};
+
+export function HeaderLinks({ className }: NavLinksProps) {
+  return (
+    <nav aria-label='Primary' className={cn('items-center gap-7 text-sm font-medium', className)}>
+      {HEADER_LINKS.map((link) => (
+        <NavLink key={link.label} href={link.href}>
+          {link.label}
+        </NavLink>
+      ))}
+    </nav>
+  );
+}
 
 export function SiteHeader() {
   return (
@@ -39,7 +57,7 @@ export function SiteHeader() {
           <Badge>Technical Test</Badge>
         </div>
 
-        <NavLinks
+        <HeaderLinks
           className={`
             hidden
             md:flex
