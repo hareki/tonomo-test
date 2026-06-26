@@ -3,7 +3,7 @@
 // the `onSelect` callback without tripping the serializable-props boundary rule.
 import { useEffect, useRef, useState } from 'react';
 
-import type { TocEntry } from '@/src/features/blog/types';
+import type { TocEntry } from '@/src/features/blog-post/types';
 import { cn } from '@/src/lib/tailwind/utils';
 
 // Left padding per nesting level (relative to the shallowest heading present).

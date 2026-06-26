@@ -1,5 +1,5 @@
 import { H1, Lead } from '@/src/components/ui/Typography';
-import type { PostMetadata } from '@/src/features/blog/types';
+import type { PostMetadata } from '@/src/features/blog-post/types';
 
 import { PostByline } from './PostByline';
 

@@ -3,9 +3,9 @@ import type { ReactNode } from 'react';
 
 import { CodeBlock } from '@/src/components/ui/CodeBlock';
 import { Blockquote, InlineCode, List, P } from '@/src/components/ui/Typography';
-import { Figure } from '@/src/features/blog/components/Figure';
-import { HeadingLink } from '@/src/features/blog/components/HeadingLink';
-import { Quote } from '@/src/features/blog/components/Quote';
+import { Figure } from '@/src/features/blog-post/components/Figure';
+import { HeadingLink } from '@/src/features/blog-post/components/HeadingLink';
+import { Quote } from '@/src/features/blog-post/components/Quote';
 import { cn } from '@/src/lib/tailwind/utils';
 
 import type { MDXComponents } from 'mdx/types';

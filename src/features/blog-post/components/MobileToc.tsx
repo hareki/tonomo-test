@@ -12,7 +12,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/src/components/ui/Drawer';
-import type { TocEntry } from '@/src/features/blog/types';
+import type { TocEntry } from '@/src/features/blog-post/types';
 import { useActiveSection } from '@/src/hooks/useActiveSection';
 import { scrollToHeading } from '@/src/lib/scroll';
 

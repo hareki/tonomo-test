@@ -1,5 +1,5 @@
-import { MobileToc } from '@/src/features/blog/components/MobileToc';
-import { getPostAnalysis } from '@/src/features/blog/content';
+import { MobileToc } from '@/src/features/blog-post/components/MobileToc';
+import { getPostAnalysis } from '@/src/features/blog-post/content';
 
 type SiteMobileBarProps = {
   slug: string;

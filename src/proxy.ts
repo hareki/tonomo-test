@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
-import { getAllSlugs } from '@/src/features/blog/queries';
+import { getAllSlugs } from '@/src/features/blog-post/queries';
 
 /**
  * The site has no landing page; `/` sends each visitor to a random post. Doing

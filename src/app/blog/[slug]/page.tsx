@@ -3,14 +3,14 @@ import { ViewTransition } from 'react';
 import { notFound } from 'next/navigation';
 
 import { SiteMobileBar } from '@/src/components/layout/SiteMobileBar';
-import { CoverImage } from '@/src/features/blog/components/CoverImage';
-import { PostBody } from '@/src/features/blog/components/PostBody';
-import { PostHeader } from '@/src/features/blog/components/PostHeader';
-import { PostLayout } from '@/src/features/blog/components/PostLayout';
-import { RelatedPosts } from '@/src/features/blog/components/RelatedPosts';
-import { TableOfContents } from '@/src/features/blog/components/TableOfContents';
-import { getPostAnalysis } from '@/src/features/blog/content';
-import { getAllSlugs, getPost, getRelatedPosts } from '@/src/features/blog/queries';
+import { CoverImage } from '@/src/features/blog-post/components/CoverImage';
+import { PostBody } from '@/src/features/blog-post/components/PostBody';
+import { PostHeader } from '@/src/features/blog-post/components/PostHeader';
+import { PostLayout } from '@/src/features/blog-post/components/PostLayout';
+import { RelatedPosts } from '@/src/features/blog-post/components/RelatedPosts';
+import { TableOfContents } from '@/src/features/blog-post/components/TableOfContents';
+import { getPostAnalysis } from '@/src/features/blog-post/content';
+import { getAllSlugs, getPost, getRelatedPosts } from '@/src/features/blog-post/queries';
 
 import type { Metadata } from 'next';
 
@@ -51,7 +51,7 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound();
   }
 
-  const { default: Content } = await import(`@/src/features/blog/posts/${slug}/content.mdx`);
+  const { default: Content } = await import(`@/src/features/blog-post/data/${slug}/content.mdx`);
   const { toc, minutes } = await getPostAnalysis(slug);
   const related = getRelatedPosts(post.slug);
 

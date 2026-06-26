@@ -1,8 +1,8 @@
 import { IconCalendar, IconClock } from '@tabler/icons-react';
 
 import { Avatar } from '@/src/components/ui/Avatar';
-import { formatPublishedDate } from '@/src/features/blog/queries';
-import type { PostMetadata } from '@/src/features/blog/types';
+import { formatPublishedDate } from '@/src/features/blog-post/queries';
+import type { PostMetadata } from '@/src/features/blog-post/types';
 
 type PostBylineProps = {
   post: PostMetadata;

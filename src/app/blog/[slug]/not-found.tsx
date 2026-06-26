@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { getAllPosts } from '@/src/features/blog/queries';
+import { getAllPosts } from '@/src/features/blog-post/queries';
 
 export default function PostNotFound() {
   const posts = getAllPosts();

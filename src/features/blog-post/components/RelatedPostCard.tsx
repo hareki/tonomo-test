@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 import { Avatar } from '@/src/components/ui/Avatar';
 import { H3 } from '@/src/components/ui/Typography';
-import { formatPublishedDate } from '@/src/features/blog/queries';
-import type { PostMetadata } from '@/src/features/blog/types';
+import { formatPublishedDate } from '@/src/features/blog-post/queries';
+import type { PostMetadata } from '@/src/features/blog-post/types';
 
 type RelatedPostCardProps = {
   post: PostMetadata;

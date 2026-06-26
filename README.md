@@ -60,7 +60,7 @@ src/
                               TableOfContents/TocList, MobileTocBar, ScrollToTopFab,
                               RelatedPost(s), and the MDX blocks (Figure, Quote, HeadingLink)
   hooks/                      useActiveSection (scroll-spy), useHydrated
-  features/blog/              types.ts, authors.ts, queries.ts (edge-safe: getPost, related,
+  features/blog-post/         types.ts, authors.ts, queries.ts (edge-safe: getPost, related,
                               random…), content.ts (Node-only: load MDX body, derive toc +
                               reading time)
     posts/
@@ -77,7 +77,7 @@ src/
 A few choices worth calling out:
 
 - **MDX bodies, co-located typed metadata.** Each post is a self-contained directory under
-  `src/features/blog/posts/<slug>/`: its body as `content.mdx` and its typed `PostMetadata` as
+  `src/features/blog-post/data/<slug>/`: its body as `content.mdx` and its typed `PostMetadata` as
   `metadata.ts`, with `posts/index.ts` aggregating them. The table of contents and reading time are
   **derived** by parsing the MDX in `content.ts` (`analyzePost`): headings (`h2`–`h4`) become TOC
   entries, and reading time is computed from the real body text. `rehype-slug` ids the rendered
