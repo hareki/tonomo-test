@@ -36,16 +36,18 @@ export function RelatedPostCard({ post }: RelatedPostCardProps) {
           />
         </ViewTransition>
 
-        <div className='flex flex-1 flex-col p-5'>
-          <H3
-            className={`
-              text-lg text-pretty transition-colors
-              group-hover:text-primary
-            `}
-          >
-            {post.title}
-          </H3>
-          <p className='mt-2 line-clamp-3 text-sm/6 text-muted-foreground'>{post.excerpt}</p>
+        <div className='flex flex-1 flex-col justify-between p-5'>
+          <div>
+            <H3
+              className={`
+                text-lg text-pretty transition-colors
+                group-hover:text-primary
+              `}
+            >
+              {post.title}
+            </H3>
+            <p className='mt-2 line-clamp-3 text-sm/6 text-muted-foreground'>{post.excerpt}</p>
+          </div>
 
           <div className='mt-4 flex items-center justify-between gap-3 text-sm'>
             <span className='flex items-center gap-2 font-medium'>

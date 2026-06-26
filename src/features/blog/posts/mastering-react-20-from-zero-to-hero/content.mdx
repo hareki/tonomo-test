@@ -1,0 +1,136 @@
+## Why React 20 Changes Things
+
+React has always been about components, but React 20 is the first version where the framework handles most of the hard work for you. The new compiler eliminates manual memoization, server actions close the gap between client and server, and fine-grained reactivity means fewer surprise re-renders. If you learned React 18 or 19, some of what you memorized is now handled automatically. That is a good thing.
+
+This guide starts from zero - a blank project - and works up to the patterns you will actually use in production. Skip to any section you need, but the order is deliberate: each concept builds on the one before it.
+
+<Figure
+  src='https://picsum.photos/seed/react-20-component-tree/1600/1000'
+  alt='A component tree diagram showing parent and child components with data flowing downward.'
+  width={1600}
+  height={1000}
+  caption='React still thinks in components. React 20 just makes wiring them together far less painful.'
+/>
+
+## Getting Started
+
+### Create a New Project
+
+The official way to start a React 20 project is through a framework. Standalone React apps without a framework are still possible but no longer the recommended path:
+
+```bash
+pnpm create next-app@latest my-app --react-version 20
+cd my-app
+pnpm dev
+```
+
+If you need a lighter setup for learning, the React team maintains a minimal Vite template:
+
+```bash
+pnpm create react-app@latest my-app --template minimal
+```
+
+### Your First Component
+
+A React component is a function that returns markup. In React 20, the default is server components - they run on the server and send HTML to the browser with no JavaScript bundle cost:
+
+```tsx
+export default function Greeting({ name }: { name: string }) {
+  return (
+    <div className='greeting'>
+      <h1>Hello, {name}</h1>
+      <p>Welcome to your first React 20 component.</p>
+    </div>
+  );
+}
+```
+
+No imports, no boilerplate. The JSX transforms automatically. Mark a component `'use client'` only when it needs browser APIs or interactivity.
+
+## State and Interactivity
+
+### The useState Hook
+
+Client components manage local state with `useState`. The API is unchanged from previous versions, which is intentional - React 20 adds new things without removing the foundations:
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+### useSignal for Fine-Grained Reactivity
+
+React 20 introduces `useSignal`, a primitive that updates only the exact DOM node that reads a value instead of re-rendering the whole component. Use it when you have a value that changes frequently and you want to avoid unnecessary work:
+
+```tsx
+'use client';
+
+import { useSignal } from 'react';
+
+export function LivePrice({ symbol }: { symbol: string }) {
+  const price = useSignal(0);
+
+  useWebSocket(`/ws/prices/${symbol}`, (value) => {
+    price.set(value);
+  });
+
+  return <span>{price}</span>;
+}
+```
+
+The `<span>` updates on every tick. The component itself does not re-render.
+
+<Quote cite='Devin Cole'>
+  The best abstraction is the one you stop thinking about. React 20 is finally at the point where the
+  framework gets out of your way more often than it gets in it.
+</Quote>
+
+## Server Actions
+
+Server actions let a client component call a server function directly - no API route needed. The framework handles the network call, serialization, and error boundary:
+
+```tsx
+'use server';
+
+export async function createPost(formData: FormData) {
+  const title = formData.get('title') as string;
+  const body = formData.get('body') as string;
+
+  await db.posts.create({ title, body });
+  revalidatePath('/posts');
+}
+```
+
+Wire it to a form with the `action` prop and React handles the rest:
+
+```tsx
+import { createPost } from './actions';
+
+export function NewPostForm() {
+  return (
+    <form action={createPost}>
+      <input name='title' placeholder='Title' />
+      <textarea name='body' placeholder='Body' />
+      <button type='submit'>Publish</button>
+    </form>
+  );
+}
+```
+
+Progressive enhancement comes for free: the form works without JavaScript, and React layers in optimistic updates when JS is available.
+
+## Where to Go Next
+
+This covers the shape of a React 20 app - server components as the default, client components for interactivity, signals for hot paths, and server actions to avoid writing API routes. The next step is data fetching patterns: `use()` for promises, Suspense boundaries, and how to cache server component output without over-fetching. Get comfortable with what is here first, then those patterns will feel like natural extensions of the same mental model.

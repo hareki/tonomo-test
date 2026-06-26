@@ -1,0 +1,131 @@
+## What Changed and Why It Matters
+
+Next.js 17 is the largest release since the App Router landed in version 13. Three bets that were experimental are now stable and on by default: Turbopack replaces Webpack as the dev bundler, the fetch cache flips to opt-in rather than opt-out, and the `after()` API graduates out of the flag. Each one has a migration cost. This guide covers all three in the order you will most likely hit them.
+
+## Turbopack Is Now the Default
+
+### What Changed
+
+Running `next dev` now starts Turbopack automatically. You no longer need the `--turbopack` flag. Webpack is still available via `--webpack` but it will not receive new features.
+
+For most projects the switch is transparent. The areas where things break are custom Webpack loaders and plugins in `next.config.js`. Turbopack has its own loader API:
+
+```js
+// next.config.js (before - Webpack)
+module.exports = {
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
+};
+```
+
+```js
+// next.config.js (after - Turbopack)
+module.exports = {
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
+      },
+    },
+  },
+};
+```
+
+If you have a heavy Webpack config, run `npx @next/codemod@latest turbopack-compat .` before upgrading - it flags everything that needs attention.
+
+### Cold Start vs. Reload Speed
+
+Cold start on a large app drops from around 12 seconds to under 2 seconds on the same machine. Incremental HMR is now measured in milliseconds because Turbopack only retranspiles the changed module and its direct importers, not the whole graph.
+
+<Figure
+  src='https://picsum.photos/seed/nextjs-17-turbopack/1600/1000'
+  alt='A terminal window showing a Next.js dev server ready in 1.8 seconds with Turbopack enabled.'
+  width={1600}
+  height={1000}
+  caption='Cold start drops from twelve seconds to under two - incremental HMR is measured in milliseconds.'
+/>
+
+## The Cache Is Now Opt-In
+
+### The Problem with Next.js 14 Caching
+
+In Next.js 14, `fetch` inside a server component was cached by default. This was the single most complained-about behavior in the framework: data that should have been fresh was silently stale, and the only way to bust it was to know about `revalidate` options most developers never read about.
+
+Next.js 17 flips this. `fetch` is uncached by default, exactly like it is in a browser or in plain Node:
+
+```ts
+// Next.js 14 - cached by default, stale until revalidated
+const res = await fetch('https://api.example.com/listings');
+
+// Next.js 17 - same call, now always fresh
+const res = await fetch('https://api.example.com/listings');
+```
+
+### Opting Into Caching Explicitly
+
+To cache a fetch, pass `cache: 'force-cache'` or a `next.revalidate` value. The intent is now visible at the call site:
+
+```ts
+// Cache this response for 60 seconds
+const res = await fetch('https://api.example.com/listings', {
+  next: { revalidate: 60 },
+});
+
+// Cache indefinitely until manually revalidated
+const res = await fetch('https://api.example.com/listings', {
+  cache: 'force-cache',
+});
+```
+
+For route-level defaults, use `export const fetchCache = 'default-cache'` at the top of the file. That opts the whole route back into the old behavior without touching individual calls.
+
+<Quote cite='Mara Whitfield'>
+  Explicit is almost always better than implicit - especially when the implicit behavior has been the
+  source of half the support issues in the forum for two years.
+</Quote>
+
+## The after() API
+
+`after()` lets you run code after the response has been sent to the client. The use case it was designed for is fire-and-forget work: logging, analytics, cache warming, and webhook calls that the user should not have to wait on.
+
+### Basic Usage
+
+```ts
+import { after } from 'next/server';
+
+export async function POST(req: Request) {
+  const body = await req.json();
+  const result = await db.submissions.create(body);
+
+  after(async () => {
+    await analytics.track('form_submitted', { id: result.id });
+    await webhooks.notify(result);
+  });
+
+  return Response.json({ ok: true });
+}
+```
+
+The response returns immediately. The `after()` callback runs on the same runtime after the stream closes. There is no queue, no worker - just deferred execution within the same request lifecycle.
+
+### Caveats
+
+The callback cannot write to the response. Any thrown error is swallowed and logged but does not bubble to the client. If the callback fails, the client never knows - so only use `after()` for genuinely non-critical side effects.
+
+## Upgrading
+
+Run the official codemod first, then run your tests:
+
+```bash
+npx @next/codemod@latest upgrade .
+pnpm install
+pnpm test
+```
+
+The codemod handles the most common mechanical changes: cache option additions on uncached fetches in getServerSideProps-style code, and the Webpack-to-Turbopack config shape. Manual review is still needed for any dynamic `fetch` calls inside utilities that are called from many routes.

@@ -1,7 +1,7 @@
-import { metadata as automatingGalleryDelivery } from './automating-gallery-delivery/metadata';
 import { metadata as buildingAReferralEngine } from './building-a-referral-engine/metadata';
+import { metadata as masteringReact20FromZeroToHero } from './mastering-react-20-from-zero-to-hero/metadata';
+import { metadata as nextjs17EverythingYouNeedToKnow } from './nextjs-17-everything-you-need-to-know/metadata';
 import { metadata as pricingOnValueNotHours } from './pricing-on-value-not-hours/metadata';
-import { metadata as theFirstClientCall } from './the-first-client-call/metadata';
 
 import type { PostMetadata } from '../types';
 
@@ -16,6 +16,6 @@ import type { PostMetadata } from '../types';
 export const postMetadataItems: PostMetadata[] = [
   pricingOnValueNotHours,
   buildingAReferralEngine,
-  theFirstClientCall,
-  automatingGalleryDelivery,
+  nextjs17EverythingYouNeedToKnow,
+  masteringReact20FromZeroToHero,
 ];
