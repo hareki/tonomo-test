@@ -4,6 +4,7 @@ import { cn } from '@/src/lib/tailwind/utils';
 import { FOOTER_LINKS } from './constants';
 import { Badge } from '../ui/Badge';
 import { NavLink } from '../ui/NavLink';
+import { InlineLink } from '../ui/Typography';
 
 const COPYRIGHT_YEAR = 2026;
 
@@ -43,7 +44,10 @@ export function SiteFooter() {
             <Badge>Technical Test</Badge>
           </div>
           <div className='text-xs/5 text-muted-foreground'>
-            <p>© {COPYRIGHT_YEAR} Tonomo Journal. A technical-test demo.</p>
+            <p>
+              © {COPYRIGHT_YEAR} Tonomo Journal. A technical-test demo by{' '}
+              <InlineLink href='https://github.com/hareki'>Tu Nguyen</InlineLink>
+            </p>
           </div>
         </div>
 

@@ -198,7 +198,7 @@ export function InlineLink<T extends ElementType = 'a'>({
       referrerPolicy='no-referrer'
       className={cn(
         `
-          relative inline font-medium text-primary
+          relative inline cursor-pointer font-medium text-primary
           after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left
           after:scale-x-0 after:bg-current after:transition-transform after:duration-300
           after:ease-out
