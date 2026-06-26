@@ -26,6 +26,7 @@
   --color-code-surface: var(--code-surface);
   --color-code-header: var(--code-header);
   --color-code-border: var(--code-border);
+  --color-inline-code-foreground: var(--inline-code-foreground);
 
   --font-sans: var(--font-poppins);
   --font-heading: var(--font-poppins);
@@ -65,6 +66,7 @@
   --code-surface: var(--color-slate-50);
   --code-header: var(--color-slate-200);
   --code-border: var(--color-slate-300);
+  --inline-code-foreground: var(--color-orange-600);
 
   --radius: 0.625rem;
 
@@ -99,6 +101,7 @@
   --code-surface: var(--color-slate-900);
   --code-header: var(--color-slate-800);
   --code-border: var(--color-slate-700);
+  --inline-code-foreground: var(--color-orange-400);
 
   --hero-from: var(--color-slate-950);
   --hero-via: var(--color-blue-900);

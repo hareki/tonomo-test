@@ -175,7 +175,10 @@ export function InlineCode<T extends ElementType = 'code'>({
     <Comp
       data-slot='inline-code'
       className={cn(
-        'rounded-sm bg-muted px-1.5 py-0.5 font-mono text-[0.875em] font-medium text-foreground',
+        `
+          rounded-sm bg-muted px-1.5 py-0.5 font-mono text-[0.875em] font-medium
+          text-inline-code-foreground
+        `,
         className,
       )}
       {...props}
