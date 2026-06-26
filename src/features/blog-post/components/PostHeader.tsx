@@ -1,7 +1,7 @@
 import { H1, Lead } from '@/src/components/ui/Typography';
 import type { PostMetadata } from '@/src/features/blog-post/types';
 
-import { PostByline } from './PostByline';
+import { PostMetadataSection } from './PostMetadataSection';
 
 type PostHeaderProps = {
   post: PostMetadata;
@@ -20,7 +20,7 @@ export function PostHeader({ post, readingMinutes }: PostHeaderProps) {
       <Lead className='mt-4 text-pretty'>{post.subtitle}</Lead>
 
       <div className='mt-6'>
-        <PostByline post={post} readingMinutes={readingMinutes} />
+        <PostMetadataSection post={post} readingMinutes={readingMinutes} />
       </div>
     </header>
   );

@@ -9,7 +9,7 @@ type PostBylineProps = {
   readingMinutes: number;
 };
 
-export function PostByline({ post, readingMinutes }: PostBylineProps) {
+export function PostMetadataSection({ post, readingMinutes }: PostBylineProps) {
   return (
     <div className='flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground'>
       <span className='inline-flex items-center gap-2 font-medium text-foreground'>
