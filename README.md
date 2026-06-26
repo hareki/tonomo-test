@@ -91,9 +91,9 @@ A few choices worth calling out:
 - **MDX bodies, co-located typed metadata.** Each post is a self-contained directory under
   `src/features/blog-post/data/<slug>/`: its body as `content.mdx` and its typed `PostMetadata` as
   `metadata.ts`, with `data/index.ts` aggregating them. The table of contents and reading time are
-  **derived** by parsing the MDX in `content.ts` (`getPostAnalysis`): headings (`h2`–`h4`) become TOC
+  **derived** by parsing the MDX in `content.ts` (`getPostAnalysis`): headings (`h2`–`h4`) become ToC
   entries, and reading time is computed from the real body text. `rehype-slug` ids the rendered
-  headings while the same slugging seeds the TOC anchors, so a TOC link can't drift from its heading.
+  headings while the same slugging seeds the ToC anchors, so a ToC link can't drift from its heading.
 - **Build-time syntax highlighting.** Code blocks render through an async `CodeBlock` Server
   Component backed by Shiki. Because post pages are statically prerendered, highlighting happens at
   build time and ships no client JS. Two themes are emitted as CSS variables, so blocks recolor with
@@ -104,18 +104,18 @@ A few choices worth calling out:
 
 ## Intentional deviations from the reference
 
-The reference design ([tonomo blog](https://www.tonomo.io/blog/how-to-close-bigger-clients-winning-the-first-meeting))
-and the test sketch informed the editorial feel, but the layout is deliberately not a pixel match:
+The the test sketch `docs/technical-test.md` informed the editorial feel, but the layout is deliberately not a pixel match:
 
 - **Table of contents on the _right_, author beside the byline.** The reference and sketch group
-  both into a left sidebar. Here the TOC sits to the right of the article and the author (avatar +
+  both into a left sidebar. Here the ToC sits to the right of the article and the author (avatar +
   name) sits with the date and reading time beneath the title. In my experience these are the more
   conventional, intuitive spots readers expect each one in.
 - **Mobile sidebar (containing Table of Contents) is a drawer, not a stacked sidebar.** `docs/technical-test.md`
-  sketches the sidebar stacking _below_ the article on mobile. The point of a TOC is to track where you
-  are on the page at any moment and to jump between sections quickly; stacking it above or below the article
-  defeats that. Instead, below `lg` the TOC moves to a button on a sticky secondary header that opens a
-  right-side drawer, keeping the reading column uninterrupted while leaving the TOC one tap away.
+  sketches the sidebar stacking _below_ the article on mobile. However, I think the point of a ToC is to
+  track where you are on the page at any moment and to jump between sections quickly; stacking it above or
+  below the article defeats that. Instead, below `lg` the ToC moves to a button on a sticky secondary
+  header that opens a drawer, keeping the reading column uninterrupted while leaving the ToC
+  one tap away.
 - **Related posts section.** Not in the reference or the test sketch, but a real blog page rarely
   ends at the article body. It's also there to ensure the post content itself demonstrates the full
   range of supported content types: headings, paragraphs, blockquotes, lists, inline code, inline
