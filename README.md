@@ -111,10 +111,10 @@ and the test sketch informed the editorial feel, but the layout is deliberately 
   both into a left sidebar. Here the TOC sits to the right of the article and the author (avatar +
   name) sits with the date and reading time beneath the title. In my experience these are the more
   conventional, intuitive spots readers expect each one in.
-- **Mobile TOC is a drawer, not a stacked sidebar.** `docs/technical-test.md` sketches the sidebar
-  stacking _below_ the article on mobile. The point of a TOC is to track where you are on the page at
-  any moment and to jump between sections quickly; stacking it above or below the article defeats
-  that. Instead, below `lg` the TOC moves to a button on a sticky secondary header that opens a
+- **Mobile sidebar (containing Table of Contents) is a drawer, not a stacked sidebar.** `docs/technical-test.md`
+  sketches the sidebar stacking _below_ the article on mobile. The point of a TOC is to track where you
+  are on the page at any moment and to jump between sections quickly; stacking it above or below the article
+  defeats that. Instead, below `lg` the TOC moves to a button on a sticky secondary header that opens a
   right-side drawer, keeping the reading column uninterrupted while leaving the TOC one tap away.
 - **Related posts section.** Not in the reference or the test sketch, but a real blog page rarely
   ends at the article body. It's also there to ensure the post content itself demonstrates the full
