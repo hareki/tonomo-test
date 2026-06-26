@@ -16,10 +16,11 @@ export async function CodeBlock({ code, lang }: CodeBlockProps) {
   const html = await highlightCode(code, lang);
 
   return (
-    <div className='overflow-hidden rounded-lg border border-border'>
+    <div className='overflow-hidden rounded-lg border border-code-border'>
       <div
         className={`
-          flex items-center justify-between gap-2 border-b border-border bg-muted py-1 pr-1.5 pl-4
+          flex items-center justify-between gap-2 border-b border-code-border bg-code-header py-1
+          pr-1.5 pl-4
         `}
       >
         <span className='font-mono text-xs font-medium tracking-wide text-muted-foreground'>

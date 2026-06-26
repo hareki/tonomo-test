@@ -28,19 +28,19 @@
 /*
  * Shiki dual-theme code blocks. Each token carries both a `--shiki-light` and a
  * `--shiki-dark` color (emitted with `defaultColor: false`); the active
- * `data-theme` decides which to show. Layout (padding, rounding) lives on the
- * CodeBlock wrapper, so this only owns colors and the margin reset.
+ * `data-theme` decides which to show. The panel background is taken from our
+ * own `--code-surface` (which already switches per `data-theme`) instead of
+ * Shiki's theme bg, so the code panel reads distinctly against the page.
+ * Layout (padding, rounding) lives on the CodeBlock wrapper, so this only owns
+ * colors and the margin reset.
  */
 .shiki {
   margin: 0;
-  background-color: var(--shiki-light-bg);
+  background-color: var(--code-surface);
 }
 .shiki,
 .shiki span {
   color: var(--shiki-light);
-}
-[data-theme='dark'] .shiki {
-  background-color: var(--shiki-dark-bg);
 }
 [data-theme='dark'] .shiki,
 [data-theme='dark'] .shiki span {
