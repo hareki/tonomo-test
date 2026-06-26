@@ -30,7 +30,7 @@ export async function CodeBlock({ code, lang }: CodeBlockProps) {
       <div
         className={`
           text-sm
-          [&_pre]:overflow-x-auto [&_pre]:p-4
+          [&_pre]:overflow-x-auto [&_pre]:p-4 [&_pre]:font-medium
         `}
         // Trusted, build-time output from Shiki over our own MDX content.
         dangerouslySetInnerHTML={{ __html: html }}

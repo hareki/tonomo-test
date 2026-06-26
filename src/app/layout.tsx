@@ -8,13 +8,27 @@ import type { Metadata } from 'next';
 import '../styles/index.css';
 
 // Poppins is the site's single typeface. It isn't a variable font, so the
-// weights actually used by the design tokens have to be listed explicitly, and
-// italic is included so `Blockquote` renders a true italic rather than a faux one.
+// weights actually used by the design tokens have to be listed explicitly.
+// `display: 'swap'` keeps text visible during load; next/font injects
+// size-adjusted fallback metrics, so swapping doesn't shift layout.
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
+  display: 'swap',
+});
+
+// The only true italic the design uses is the 500-weight `Blockquote`. Loading
+// it as a separate instance avoids preloading the three italic weights (400,
+// 600, 700) that are never rendered. Applied via `--font-poppins-italic` so the
+// blockquote gets a real italic face rather than a synthesized (faux) one.
+const poppinsItalic = Poppins({
+  variable: '--font-poppins-italic',
+  subsets: ['latin'],
+  weight: ['500'],
+  style: ['italic'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -42,6 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
       className={`
         ${poppins.variable}
+        ${poppinsItalic.variable}
         h-full antialiased
       `}
     >

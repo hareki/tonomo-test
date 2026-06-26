@@ -64,8 +64,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <PostLayout
         article={
           <div className='space-y-8'>
-            {/* Banner: shares the content column's width, never spanning the sidebar. */}
-            <CoverImage slug={post.slug} image={post.cover} priority />
+            <CoverImage slug={post.slug} image={post.cover} />
             <PostHeader post={post} readingMinutes={minutes} />
             <hr className='border-border' />
             <PostBody>

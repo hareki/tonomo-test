@@ -106,7 +106,8 @@ export function Blockquote<T extends ElementType = 'blockquote'>({
       data-slot='blockquote'
       className={cn(
         `
-          border-l-2 border-primary pl-5 text-lg/8 font-medium text-foreground italic
+          border-l-2 border-primary pl-5 font-heading-italic text-lg/8 font-medium text-foreground
+          italic
           sm:text-xl
         `,
         className,

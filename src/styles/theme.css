@@ -24,6 +24,9 @@
 
   --font-sans: var(--font-poppins);
   --font-heading: var(--font-poppins);
+  /* Separate italic instance (500 only); see src/app/layout.tsx. Applied to the
+   * blockquote so it renders a real italic face instead of a synthesized one. */
+  --font-heading-italic: var(--font-poppins-italic);
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;

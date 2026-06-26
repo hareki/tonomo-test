@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   experimental: {
     viewTransition: true,
+    inlineCss: true,
   },
   images: {
     remotePatterns: [
