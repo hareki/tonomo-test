@@ -16,7 +16,7 @@ navigation, and sufficient contrast).
 
 ## Running locally
 
-Requires Node 20+ and [pnpm](https://pnpm.io).
+Requires Node 20+ (only tested on Node 24.18.0) and [pnpm](https://pnpm.io).
 
 ```bash
 pnpm install
