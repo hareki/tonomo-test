@@ -1,4 +1,4 @@
-import { H1, Lead } from '@/src/components/ui/Typography';
+import { H1, H1Tag, Lead } from '@/src/components/ui/Typography';
 import type { PostMetadata } from '@/src/features/blog-post/types';
 
 import { PostMetadataSection } from './PostMetadataSection';
@@ -11,9 +11,7 @@ type PostHeaderProps = {
 export function PostHeader({ post, readingMinutes }: PostHeaderProps) {
   return (
     <header>
-      {post.tags[0] && (
-        <p className='text-sm font-semibold tracking-wide text-primary uppercase'>{post.tags[0]}</p>
-      )}
+      {post.tags[0] && <H1Tag>{post.tags[0]}</H1Tag>}
 
       <H1 className='mt-3'>{post.title}</H1>
 

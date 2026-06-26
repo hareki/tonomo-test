@@ -24,6 +24,22 @@ export function H1<T extends ElementType = 'h1'>({ as, className, ...props }: Po
   );
 }
 
+export function H1Tag<T extends ElementType = 'p'>({
+  as,
+  className,
+  ...props
+}: PolymorphicProps<T>) {
+  const Comp = as ?? 'p';
+
+  return (
+    <Comp
+      data-slot='tag'
+      className={cn('text-sm font-semibold tracking-wide text-primary uppercase', className)}
+      {...props}
+    />
+  );
+}
+
 export function H2<T extends ElementType = 'h2'>({ as, className, ...props }: PolymorphicProps<T>) {
   const Comp = as ?? 'h2';
 
