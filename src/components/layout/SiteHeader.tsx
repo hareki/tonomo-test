@@ -2,11 +2,10 @@ import Link from 'next/link';
 
 import { TonomoLogo } from '@/src/components/icons/TonomoLogo';
 import { Badge } from '@/src/components/ui/Badge';
-import { ThemeCycleButton } from '@/src/components/ui/ThemeCycleButton';
-import { ThemeSegmentedControl } from '@/src/components/ui/ThemeSegmentedControl';
 
 import { NavLinks } from './NavLinks';
 import { NavMenuButton } from './NavMenuButton';
+import { ThemeSwitcher } from '../ui/ThemeSwitcher';
 
 import type { Route } from 'next';
 
@@ -47,21 +46,9 @@ export function SiteHeader() {
           `}
         />
 
-        <div className='flex items-center gap-4'>
-          <ThemeSegmentedControl
-            className={`
-              hidden
-              md:inline-flex
-            `}
-          />
-
-          <div
-            className={`
-              flex items-center gap-2
-              md:hidden
-            `}
-          >
-            <ThemeCycleButton />
+        <div className='flex items-center gap-2'>
+          <ThemeSwitcher />
+          <div className='md:hidden'>
             <NavMenuButton />
           </div>
         </div>

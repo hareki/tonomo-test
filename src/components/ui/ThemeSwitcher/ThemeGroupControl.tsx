@@ -18,7 +18,7 @@ type ThemeSegmentedControlProps = {
   className?: string;
 };
 
-export function ThemeSegmentedControl({ className }: ThemeSegmentedControlProps) {
+export function ThemeGroupControl({ className }: ThemeSegmentedControlProps) {
   const { theme, setTheme } = useTheme();
   const hydrated = useHydrated();
 

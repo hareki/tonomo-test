@@ -5,7 +5,6 @@ import { useTheme } from '@teispace/next-themes';
 
 import { Button } from '@/src/components/ui/Button';
 import { useHydrated } from '@/src/hooks/useHydrated';
-import { cn } from '@/src/lib/tailwind/utils';
 
 // Cycle order requested for the compact control: system -> dark -> light -> …
 const CYCLE = ['system', 'dark', 'light'] as const;
@@ -18,17 +17,13 @@ const META = {
 
 type ThemeValue = keyof typeof META;
 
-type ThemeCycleButtonProps = {
-  className?: string;
-};
-
 /**
  * Compact theme control for narrow viewports: a single button that cycles
  * system -> dark -> light. Replaces the segmented control below `md`. The icon
  * reflects the current selection only after hydration (it falls back to the
  * system icon during SSR to avoid a resolved-theme mismatch).
  */
-export function ThemeCycleButton({ className }: ThemeCycleButtonProps) {
+export function ThemeCycleButton() {
   const { theme, setTheme } = useTheme();
   const hydrated = useHydrated();
 
@@ -44,7 +39,6 @@ export function ThemeCycleButton({ className }: ThemeCycleButtonProps) {
 
         setTheme(next);
       }}
-      className={cn(className)}
     >
       <Icon aria-hidden />
     </Button>
