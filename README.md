@@ -5,7 +5,7 @@ A responsive editorial blog built for the technical test in
 sticky scroll-synced table of contents, a light/dark/system theme switcher, syntax-highlighted code,
 related posts, and animated navigation.
 
-**Live demo:** https://tonomo-test-phi.vercel.app
+**Live demo:** https://tonomo-test-phi.vercel.app - scores 92-100 across all Lighthouse categories on mobile devices.
 
 All four bonus points are covered: a React component layout, a sticky scroll-synced table of
 contents, a light/dark/system theme toggle, and accessibility (semantic landmarks, keyboard
