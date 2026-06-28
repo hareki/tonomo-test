@@ -22,7 +22,7 @@ export function PostMetadataSection({ post, readingMinutes }: PostBylineProps) {
       </span>
       <span className='inline-flex items-center gap-1.5'>
         <IconClock className='size-4' aria-hidden />
-        {readingMinutes} {readingMinutes === 1 ? 'min' : 'mins'} read
+        {readingMinutes} min read
       </span>
     </div>
   );
